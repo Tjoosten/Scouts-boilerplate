@@ -1,0 +1,59 @@
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+// Colors
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+
+// Huisstijlkleuren van Scouts en Gidsen Vlaanderen
+
+$sgv-colors: (
+    'bijna-zwart': #48454B,
+    'beige': #E7E0DE,
+    'bruin': #572600,
+    'donkergroen': #748D26,
+    'lichtgroen': #BDD732,
+    'vaalgroen': #DBE68E,
+    'blauw':  #256F91,
+    'rood': #ED1C23,
+    'oranje': #F5821F,
+);
+
+// Body
+$body-bg:  #e6e3da;
+
+// Backgrounds
+$dropdown-bg: #fff;
+
+// Standaard brand kleuren van Bootstrap
+
+$primary: map-get($sgv-colors, 'donkergroen');
+$warning: map-get($sgv-colors, 'oranje');
+$danger:  map-get($sgv-colors, 'rood');
+$success: map-get($sgv-colors, 'donkergroen');
+$info:    map-get($sgv-colors, 'donkergroen');
+
+$input-disabled-bg: #ddd;
+$custom-select-disabled-bg: #ddd;
+
+$navbar-dark-brand-hover-color: darken(map-get($sgv-colors, 'lichtgroen'), 10%);
+
+$navbar-light-brand-color: map-get($sgv-colors, 'bruin');
+$navbar-light-color:       map-get($sgv-colors, 'bruin');
+$navbar-dark-hover-color:  darken(map-get($sgv-colors, 'bruin'), 10%);
+$navbar-dark-active-color: darken(map-get($sgv-colors, 'bruin'), 20%);
+
+$navbar-dark-brand-color:  map-get($sgv-colors, 'lichtgroen');
+$navbar-dark-color:        map-get($sgv-colors, 'lichtgroen');
+$navbar-dark-hover-color:  darken(map-get($sgv-colors, 'lichtgroen'), 10%);
+$navbar-dark-active-color: darken(map-get($sgv-colors, 'lichtgroen'), 10%);

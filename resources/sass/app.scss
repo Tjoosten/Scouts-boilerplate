@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito'); // Main font throughout the application.
+@import 'variables';                                           // Variables
+@import '~bootstrap/scss/bootstrap';                           // Bootstrap CSS framework
+
+// (1) Background color classes die gegenereerd worden op basis van de huisstijlkeuren van Scouts en Gidsen Vlaanderen.
+// (2) Color classes gegenereerd of huisstijlkleuren van Scouts en Gidsen Vlaanderen.
+// (3) tekstuele kleur classes gebaseerd op de huisstijlkleuren van Scouts en Gidsen Vlaanderen
+@each $name, $code in $sgv-colors {
+    .bg-#{$name}    { background-color: $code; }  // (1)
+    .color-#{$name} { color: $code; }             // (2)
+    .text-#{$name}  { color: $code; }             // (3)
+}
+
+/// ----------------------------------------------------------
+/// DEMO STYLES - CAN BBE DELETED WHILE DEVELOPING YOUR APP
+/// ----------------------------------------------------------
+
+// Demo welkom pagina. De styles in deze sectie kunnen tijdens de ontwikkeling verwijderd worden.
+// aangezien deze alleen gebruikt worden als standaard vormgeving van de starter boilerplate.
+.jumbotron-welcome {
+    background-color: map-get($sgv-colors, 'vaalgroen');
+
+    > p      { color: map-get($sgv-colors, 'donkergroen'); }
+    > .title { color: map-get($sgv-colors, 'bruin'); }
+
+    .btn-github  { @include button-variant(#333, darken(#333, 10%)); }
+    .btn-laravel { @include button-variant(#f55247, darken(#f55247, 5%)); }
+}
+
+/// ----------------------------------------------------------
+/// PAGE HEADER
+/// ----------------------------------------------------------
+.page-header {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+}
+
+.page-title-icon {
+    color: #9aa0ac;
+    font-size: 1.25rem;
+}
+
+.page-subtitle {
+    font-size: 0.8125rem;
+    color: #6e7687;
+    margin-left: 2rem;
+
+    a {
+        color: inherit;
+    }
+}
+
+.page-options {
+    margin-left: auto;
+}
+
+/// ----------------------------------------------------------
+/// ICONEN
+/// ----------------------------------------------------------
+.icon {
+    width: 1em;
+    height: 1em;
+    font-size: 16px;
+    vertical-align: -0.2em;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.icon-filled {
+    fill: currentColor;
+}
+
+.icon-thin {
+    stroke-width: 1.5;
+}
+
+.icon-md {
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+.icon-lg {
+    font-size: 2rem;
+}
+
+.icon-xl {
+    font-size: 4rem;
+}
+
+
+.icons-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0 -2px -1px 0;
+    list-style: none;
+
+    > li {
+        flex: 1 0 4rem;
+    }
+}
+
+.icons-list-wrap {
+    overflow: hidden;
+}
+
+.icons-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 4rem;
+    text-align: center;
+    border-right: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+
+    > i {
+        font-size: 1.25rem;
+    }
+}
