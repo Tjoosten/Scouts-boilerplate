@@ -1,6 +1,4 @@
-@extends ('layouts.app')
-
-@section ('content')
+<x-app-layout :title="__('Account instellingen')">
     <div class="container pb-4">
         <div class="page-header">
             <h1 class="page-title text-donkergroen">{{ $user->name }}</h1>
@@ -96,4 +94,4 @@
             </div>
         </div>
     </div>
-@endsection
+</x-app-layout>
