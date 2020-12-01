@@ -482,7 +482,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXBwLmpzPzZkNDAiXSwibmFtZXMiOlsicmVxdWlyZSJdLCJtYXBwaW5ncyI6IkFBQUFBLG1CQUFPLENBQUMsZ0RBQUQsQ0FBUCIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9hcHAuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJyZXF1aXJlKCcuL2Jvb3RzdHJhcCcpO1xuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
+eval("__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\"); // Auto hide success messages from forms.\n\n\n$('div.col.my-auto.text-success.font-weight-bold').not('.success-message').delay(4000).fadeOut(350);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXBwLmpzPzZkNDAiXSwibmFtZXMiOlsicmVxdWlyZSIsIiQiLCJub3QiLCJkZWxheSIsImZhZGVPdXQiXSwibWFwcGluZ3MiOiJBQUFBQSxtQkFBTyxDQUFDLGdEQUFELENBQVAsQyxDQUVBOzs7QUFDQUMsQ0FBQyxDQUFDLCtDQUFELENBQUQsQ0FBbURDLEdBQW5ELENBQXVELGtCQUF2RCxFQUEyRUMsS0FBM0UsQ0FBaUYsSUFBakYsRUFBdUZDLE9BQXZGLENBQStGLEdBQS9GIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL2FwcC5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbInJlcXVpcmUoJy4vYm9vdHN0cmFwJyk7XG5cbi8vIEF1dG8gaGlkZSBzdWNjZXNzIG1lc3NhZ2VzIGZyb20gZm9ybXMuXG4kKCdkaXYuY29sLm15LWF1dG8udGV4dC1zdWNjZXNzLmZvbnQtd2VpZ2h0LWJvbGQnKS5ub3QoJy5zdWNjZXNzLW1lc3NhZ2UnKS5kZWxheSg0MDAwKS5mYWRlT3V0KDM1MCk7XG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
 
 /***/ }),
 

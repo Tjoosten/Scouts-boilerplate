@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Traits\ActivityLogging;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * Class User
@@ -16,6 +18,7 @@ class User extends Authenticatable
 {
     use HasFactory;
     use Notifiable;
+    use ActivityLogging;
 
     /**
      * The attributes that are mass assignable.
@@ -37,4 +40,26 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = ['email_verified_at' => 'datetime'];
+
+    /**
+     * Method for hashing the user password in the database storage.
+     *
+     * @param  string $password The given password from the user login.
+     * @return void
+     */
+    public function setPasswordAttribute(string $password): void
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    /**
+     * Method for uppercase the first character of the username.
+     *
+     * @param  string $name The username from the user account.
+     * @return string
+     */
+    public function getNameAttribute(string $name): string
+    {
+        return ucwords($name);
+    }
 }

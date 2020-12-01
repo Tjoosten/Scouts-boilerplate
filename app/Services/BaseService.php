@@ -75,6 +75,11 @@ abstract class BaseService
      */
     protected array $scopes = [];
 
+    /**
+     * @todo Complete docblock
+     * @param array|string[] $columns
+     * @return Collection
+     */
     public function allRecords(array $columns = ['*']): Collection
     {
         $this->newQuery()->eagerLoad();

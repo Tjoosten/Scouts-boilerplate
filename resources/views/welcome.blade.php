@@ -6,7 +6,7 @@
                     <h3 class="title">{{ config('app.name')  }} - {{ __('Hackaton Starter') }}</h3>
                     <p class="lead">{{ __('A hackaton starter boilerplate for Laravel projects and scouting.')  }}</p>
 
-                    <a href="" class="btn btn-github">
+                    <a href="" class="btn btn-github mr-1">
                         Github
                     </a>
 

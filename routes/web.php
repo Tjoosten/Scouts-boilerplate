@@ -21,8 +21,12 @@ Auth::routes();
 Route::get('/', WelcomeController::class)->name('welcome');
 
 Route::group(['middleware' => 'auth'], static function () {
+    Route::delete('/Account-verwijderen', [AccountController::class, 'destroy'])->name('account.delete');
+
     Route::group(['prefix' => 'account-instellngen'], static function (): void {
-        Route::get('/', AccountController::class)->name('account.settings');
+        Route::get('/', [AccountController::class, 'index'])->name('account.settings');
+        Route::patch('/informatie', [AccountController::class, 'updateInformation'])->name('account.settings.information');
+        Route::patch('/security', [AccountController::class, 'updateSecurity'])->name('account.settings.security');
     });
 
    Route::get('/home', DashboardController::class)->name('home');

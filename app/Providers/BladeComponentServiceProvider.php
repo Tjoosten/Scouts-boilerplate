@@ -20,6 +20,7 @@ class BladeComponentServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->registerLayoutComponents();
+        $this->registerFormComponents();
     }
 
     /**
@@ -30,5 +31,16 @@ class BladeComponentServiceProvider extends ServiceProvider
     private function registerLayoutComponents(): void
     {
         Blade::component('layouts.app', 'app-layout');
+    }
+
+    /**
+     * method for registering the form related components in the application.
+     *
+     * @return void
+     */
+    private function registerFormComponents()
+    {
+        Blade::component('components.form', 'form');
+        Blade::component('components.error', 'error');
     }
 }
