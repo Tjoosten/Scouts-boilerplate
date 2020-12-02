@@ -23,14 +23,12 @@ class DeleteUserAction
      */
     public function execute(User $user): bool
     {
-        DB::transaction(function () use ($user): void {
+        return DB::transaction(function () use ($user): bool {
             $this->activityNeedsLogging($user);
-            (new UserService)->deleteByIdentifier($user->id);
+            $this->sendOutEmailNotification($user);
+
+            return (new UserService)->deleteByIdentifier($user->id);
         });
-
-        $this->sendOutEmailNotification($user);
-
-        return true;
     }
 
     /**
