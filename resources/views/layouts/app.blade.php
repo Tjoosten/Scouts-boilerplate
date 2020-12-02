@@ -65,6 +65,16 @@
                             </a>
 
                             <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @if (Auth::user()->canAccessKiosk())
+                                    <a href="" class="dropdown-item">
+                                        <x-heroicon-o-home class="icon mr-1 color-bruin"/> {{ __('Kiosk') }}
+                                    </a>
+                                @elseif(Auth::user()->isOnKiosk())
+                                    <a href="{{ route('welcome') }}" class="dropdown-item">
+                                        <x-heroicon-o-globe class="icon mr-1 color-bruin"/> {{ __('Website') }}
+                                    </a>
+                                @endif
+
                                 <a href="{{ route('account.settings') }}" class="dropdown-item">
                                     <x-heroicon-o-adjustments class="color-bruin icon mr-1"/> {{ __('Instellingen') }}
                                 </a>

@@ -19,12 +19,14 @@
         "spatie/data-transfer-object": "^2.6",
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-flash": "^1.8",
+        "spatie/laravel-permission": "^3.18",
         "watson/active": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "laravel/telescope": "^4.3",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3.3"

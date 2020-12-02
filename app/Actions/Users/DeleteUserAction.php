@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Notifications\Users\AccountDeletedNotification;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 
 /**
  * Class DeleteUserAction
@@ -22,12 +23,14 @@ class DeleteUserAction
      */
     public function execute(User $user): bool
     {
-        return DB::transaction(function () use ($user): bool {
+        DB::transaction(function () use ($user): void {
             $this->activityNeedsLogging($user);
-            $this->sendOutEmailNotification($user);
-
-            return (new UserService)->deleteByIdentifier($user->id);
+            (new UserService)->deleteByIdentifier($user->id);
         });
+
+        $this->sendOutEmailNotification($user);
+
+        return true;
     }
 
     /**
@@ -52,7 +55,7 @@ class DeleteUserAction
     private function sendOutEmailNotification(User $user): void
     {
         if (auth()->user()->is($user)) {
-            $user->notify(new AccountDeletedNotification());
+            Notification::route('mail', $user->email)->notify(new AccountDeletedNotification());
         }
     }
 }

@@ -3,11 +3,13 @@
 namespace App\Models;
 
 use App\Models\Traits\ActivityLogging;
+use App\Models\Traits\KioskMethods;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Traits\HasRoles;
 
 /**
  * Class User
@@ -19,6 +21,8 @@ class User extends Authenticatable
     use HasFactory;
     use Notifiable;
     use ActivityLogging;
+    use HasRoles;
+    use KioskMethods;
 
     /**
      * The attributes that are mass assignable.
