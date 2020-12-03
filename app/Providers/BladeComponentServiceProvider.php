@@ -31,6 +31,8 @@ class BladeComponentServiceProvider extends ServiceProvider
     private function registerLayoutComponents(): void
     {
         Blade::component('layouts.app', 'app-layout');
+        Blade::component('layouts.kiosk', 'app-kiosk-layout');
+        Blade::component('components.flashMessage', 'app-flash-message');
     }
 
     /**

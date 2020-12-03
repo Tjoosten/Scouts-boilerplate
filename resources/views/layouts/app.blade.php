@@ -21,6 +21,8 @@
 </head>
 <body>
 <div id="app">
+    <x-app-flash-message/>
+
     <nav class="navbar navbar-expand-md navbar-dark bg-bruin shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ route('welcome') }}">
@@ -66,12 +68,8 @@
 
                             <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 @if (Auth::user()->canAccessKiosk())
-                                    <a href="" class="dropdown-item">
+                                    <a href="{{ route('kiosk.dashboard') }}" class="dropdown-item">
                                         <x-heroicon-o-home class="icon mr-1 color-bruin"/> {{ __('Kiosk') }}
-                                    </a>
-                                @elseif(Auth::user()->isOnKiosk())
-                                    <a href="{{ route('welcome') }}" class="dropdown-item">
-                                        <x-heroicon-o-globe class="icon mr-1 color-bruin"/> {{ __('Website') }}
                                     </a>
                                 @endif
 

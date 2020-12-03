@@ -36,33 +36,54 @@
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ Auth::user()->name }}
+                                <x-heroicon-o-user class="mr-1 icon text-lichtgroen"/> {{ Auth::user()->name }}
                             </a>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdown">
-                                <h6 class="dropdown-header font-weight-bold">Account</h6>
-
-                                <a class="dropdown-item" href="">
-                                    Instellingen
+                            <div class="dropdown-menu dropdown-menu-right border-0 shadow-sm" aria-labelledby="accountDropdown">
+                                <a class="dropdown-item" href="{{ route('welcome') }}">
+                                    <x-heroicon-o-globe class="icon text-bruin mr-1"/> {{ __('Website') }}
                                 </a>
+
+                                <a class="dropdown-item" href="{{ route('account.settings') }}">
+                                    <x-heroicon-o-adjustments class="color-bruin icon mr-1"/> {{ __('Instellingen') }}
+                                </a>
+
+                                <div class="dropdown-divider"></div>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    Afmelden
-                                </a>
+                                    <x-heroicon-o-logout class="text-danger icon mr-1"/> {{ __('Afmelden') }}
 
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf {{-- Form field protection --}}
-                                </form>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf {{-- Form field protection --}}
+                                    </form>
+                                </a>
                             </div>
                         </li>
                     </ul>
                 @endif
             </div>
         </nav>
+        <div class="nav-scroller bg-lichtgroen shadow-sm">
+            <nav class="nav nav-underline">
+                <a href="{{ route('kiosk.dashboard') }}" class="{{ active('kiosk.dashboard') }} nav-link">
+                    <x:heroicon-o-home class="icon mr-1"/> {{ __('Dashboard') }}
+                </a>
 
-        <main class="py-4">
+                <a href="" class="nav-link">
+                    <x:heroicon-o-users class="icon mr-1"/> {{ __('Gebruikers') }}
+                </a>
+            </nav>
+        </div>
+
+        <main role="main">
             {{ $slot }}
         </main>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <span class="text-muted font-weight-bold">&copy; 2019 - {{ date('Y') }} <span class="ml-1">{{ config('app.name') }}</span></span>
+            </div>
+        </footer>
     </div>
 </body>
 </html>
