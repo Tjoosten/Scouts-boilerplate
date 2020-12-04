@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Kiosk\Users;
 
+use App\Actions\Users\DeleteUserAction;
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 /**
@@ -33,5 +36,10 @@ class UsersController extends Controller
     public function index(string|null $filter = null): Renderable
     {
        return view('kiosk.users.index', ['users' => $this->userService->getUsers($filter)]);
+    }
+
+    public function destroy(User $user, DeleteUserAction $deleteUserAction): RedirectResponse
+    {
+        $this->authoriza('delete', $user);
     }
 }

@@ -30,6 +30,51 @@
     <div class="container-fluid pb-3">
         <div class="card border-0 shadow-sm">
             <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-sm table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th class="border-top-0" scope="col">{{ __('Naam')  }}</th>
+                                <th class="border-top-0" scope="col">{{ __('Status') }}</th>
+                                <th class="border-top-0" scope="col">{{ __('Email adres') }}</th>
+                                <th class="border-top-0" scope="col" colspan="2">{{ __('Registratie datum') }}</th> {{-- Colspan="2" is needed for the fynctions --}}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse ($users as $user) {{-- Loop trough the users --}}
+                                <tr>
+                                    <td class="text-muted font-weight-bold">{{ $user->name }}</td>
+                                    <td><span class="badge badge-online">{{ __('Actieve gebruiker') }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>
+                                        {{ $user->created_at->format('d-m-Y') }}
+                                        <span class="small text-muted">({{ $user->created_at->diffForHumans() }})</span>
+                                    </td>
+                                    <td>
+                                        <span class="float-right">
+                                            <a href="" class="text-muted text-decoration-none mr-3">
+                                                <x-heroicon-o-eye class="icon"/>
+                                            </a>
+
+                                            <a href="mailto:{{ $user->email }}" class="text-muted text-decoration-none mr-1">
+                                                <x-heroicon-o-mail class="icon"/>
+                                            </a>
+
+                                            <a href="" class="text-muted text-decoration-none mr-1">
+                                                <x-heroicon-o-pencil class="icon"/>
+                                            </a>
+
+                                            <a href="" class="text-danger text-decoration-none mr-1">
+                                                <x-heroicon-o-trash class="icon"/>
+                                            </a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            @empty {{-- There are no users found --}}
+                            @endforelse {{-- END for loop --}}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

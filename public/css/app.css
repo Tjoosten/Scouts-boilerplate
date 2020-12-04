@@ -11015,6 +11015,11 @@ a.text-dark:focus {
   width: 290px !important;
 }
 
+.badge-online {
+  background-color: #D1FAE5;
+  color: #10B981;
+}
+
 .jumbotron-welcome {
   background-color: #DBE68E;
 }
