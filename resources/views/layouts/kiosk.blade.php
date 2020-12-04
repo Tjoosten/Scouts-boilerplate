@@ -69,7 +69,7 @@
                     <x:heroicon-o-home class="icon mr-1"/> {{ __('Dashboard') }}
                 </a>
 
-                <a href="" class="nav-link">
+                <a href="{{ route('kiosk.users.index') }}" class="nav-link {{ active('kiosk.users.*') }}">
                     <x:heroicon-o-users class="icon mr-1"/> {{ __('Gebruikers') }}
                 </a>
             </nav>

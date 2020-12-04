@@ -11,6 +11,10 @@
     .text-#{$name}  { color: $code; }             // (3)
 }
 
+.form-search {
+    width: 290px !important;
+}
+
 /// ----------------------------------------------------------
 /// DEMO STYLES - CAN BBE DELETED WHILE DEVELOPING YOUR APP
 /// ----------------------------------------------------------

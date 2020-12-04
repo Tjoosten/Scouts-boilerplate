@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\User;
+use Illuminate\Contracts\Pagination\Paginator;
 
 /**
  * Class UserService
@@ -46,5 +47,16 @@ class UserService extends BaseService
     private function activityNeedsLogging(User $user): bool
     {
         return auth()->user()->isNot(model: $user);
+    }
+
+    /**
+     * Method for getting all the users in the application.
+     *
+     * @param  string|null $filter THe filter criteria that will be applied to the users.
+     * @return Paginator
+     */
+    public function getUsers(?string $filter = null): Paginator
+    {
+        return $this->paginate();
     }
 }

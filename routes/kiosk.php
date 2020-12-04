@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Kiosk\DashboardController;
+use App\Http\Controllers\Kiosk\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['auth', 'kiosk']], static function (): void {
     Route::get('/', DashboardController::class)->name('kiosk.dashboard');
+
+
+    Route::group(['prefix' => 'users'], static function (): void {
+       Route::get('/{filter?}', [UsersController::class, 'index'])->name('kiosk.users.index');
+    });
 });

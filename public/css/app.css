@@ -11011,6 +11011,10 @@ a.text-dark:focus {
   color: #F5821F;
 }
 
+.form-search {
+  width: 290px !important;
+}
+
 .jumbotron-welcome {
   background-color: #DBE68E;
 }

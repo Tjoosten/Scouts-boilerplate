@@ -17,20 +17,21 @@ class UsersController extends Controller
     /**
      * UsersController constructor.
      *
-     * @param  UserService $service Database abstraction layer that is related for the users.
+     * @param  UserService $userService Database abstraction layer that is related for the users.
      * @return void
      */
     public function __construct(
-        private UserService $service
+        private UserService $userService
     ) {}
 
     /**
      * Method for displaying all the users in the application.
      *
+     * @param  string|null $filter The filter to apply on the users from the database.
      * @return Renderable
      */
-    public function index(): Renderable
+    public function index(string|null $filter = null): Renderable
     {
-       return view('kiosk.users.index', []);
+       return view('kiosk.users.index', ['users' => $this->userService->getUsers($filter)]);
     }
 }
