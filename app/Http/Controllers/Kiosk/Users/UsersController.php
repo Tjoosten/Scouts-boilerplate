@@ -45,6 +45,24 @@ class UsersController extends Controller
     }
 
     /**
+     * Method for displaying the user information in the application.
+     *
+     * @todo Implement and embed the user route
+     * @todo Create view
+     *
+     * @param User $user
+     * @return Renderable
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function show(User $user): Renderable
+    {
+        $this->authorize('show', $user);
+
+
+    }
+
+    /**
      * Method for displaying the edit view from the given user.
      *
      * @param  User $user The resource entity from the given user.
@@ -63,6 +81,8 @@ class UsersController extends Controller
      * Method for updating the user in the application.
      * ---
      * See the form request class for the request authorization.
+     *
+     * @todo Complete the form request rules.
      *
      * @param  UpdateUserRequest $request          The request entity that contains all the request information.
      * @param  User              $userEntity       The resource entity from the authenticated user.
