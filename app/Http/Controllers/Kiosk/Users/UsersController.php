@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Kiosk\Users;
 use App\Actions\Users\DeleteUserAction;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Services\RoleService;
 use App\Services\UserService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
@@ -21,10 +22,12 @@ class UsersController extends Controller
      * UsersController constructor.
      *
      * @param  UserService $userService Database abstraction layer that is related for the users.
+     * @param  RoleService $roleService Database abstraction layer that is related to the permission roles.
      * @return void
      */
     public function __construct(
-        private UserService $userService
+        private UserService $userService,
+        private RoleService $roleService
     ) {}
 
     /**
@@ -39,7 +42,9 @@ class UsersController extends Controller
     }
 
     /**
-     * @param  User $user
+     * Method for displaying the edit view from the given user.
+     *
+     * @param  User $user The resource entity from the given user.
      * @return Renderable
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException
@@ -48,7 +53,7 @@ class UsersController extends Controller
     {
         $this->authorize('update', $user);
 
-        return view('kiosk.users.edit', ['user' => $user, 'roles' => $this->roleService->getRoles('dropdown')]);
+        return view('kiosk.users.edit', ['user' => $user, 'roles' => $this->roleService->getRoles()]);
     }
 
     /**
