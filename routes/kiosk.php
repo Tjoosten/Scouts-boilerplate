@@ -21,5 +21,6 @@ Route::group(['middleware' => ['auth', 'kiosk']], static function (): void {
 
     Route::group(['prefix' => 'users'], static function (): void {
        Route::get('/{filter?}', [UsersController::class, 'index'])->name('kiosk.users.index');
+       Route::get('/gebruikers/verwijderen/{user}', [UsersController::class, 'destroy'])->name('kiosk.users.delete');
     });
 });

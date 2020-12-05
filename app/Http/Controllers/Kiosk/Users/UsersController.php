@@ -38,8 +38,23 @@ class UsersController extends Controller
        return view('kiosk.users.index', ['users' => $this->userService->getUsers($filter)]);
     }
 
+    /**
+     * Method for deleting an user account in the application.
+     *
+     * @param  User             $user             The resource entity from the given user.
+     * @param  DeleteUserAction $deleteUserAction The handling for deleting the user in the application.
+     * @return RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function destroy(User $user, DeleteUserAction $deleteUserAction): RedirectResponse
     {
-        $this->authoriza('delete', $user);
+        $this->authorize('delete', $user);
+        $deleteUserAction->execute($user);
+
+        $languageKeys = ['user' => $user->name, 'application' => config('app.name')];
+        flash(__('De login van :user is verwijderd in :application', $languageKeys), 'alert-success');
+
+        return redirect()->route('kiosk.users.index');
     }
 }

@@ -64,7 +64,7 @@
                                                 <x-heroicon-o-pencil class="icon"/>
                                             </a>
 
-                                            <a href="" class="text-danger text-decoration-none mr-1">
+                                            <a href="{{ route('kiosk.users.delete', $user) }}" class="text-danger text-decoration-none mr-1">
                                                 <x-heroicon-o-trash class="icon"/>
                                             </a>
                                         </span>

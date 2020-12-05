@@ -21,5 +21,8 @@ class UserPolicy
      * @param  User $model The resource entity from the given user.
      * @return bool
      */
-    public function
+    public function delete(User $user, User $model): bool
+    {
+        return $user->hasAnyRole(['administrator', 'webmaster']) || $user->is($model);
+    }
 }

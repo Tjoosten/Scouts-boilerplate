@@ -75,6 +75,8 @@
             </nav>
         </div>
 
+        <x-app-flash-message/>
+
         <main role="main">
             {{ $slot }}
         </main>
