@@ -11020,6 +11020,40 @@ a.text-dark:focus {
   color: #10B981;
 }
 
+.list-group-transparent .list-group-item {
+  border-left: 5px solid transparent;
+  border-right: 0;
+  border-bottom: 0;
+  border-top: 0;
+  background: none;
+  color: #4A5568;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  margin-bottom: 0.4rem;
+}
+
+.list-group-transparent .list-group-item .icon {
+  color: #572600;
+}
+
+.list-group-transparent .list-group-item:hover {
+  background: #fff;
+  border-left: 5px solid #572600;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.list-group-transparent .list-group-item.active {
+  border-left: 5px solid #572600;
+  background: #fff;
+  color: #4A5568;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+
+.list-group-transparent .list-group-item.active .icon {
+  font-weight: bold;
+  color: #572600;
+}
+
 .jumbotron-welcome {
   background-color: #DBE68E;
 }

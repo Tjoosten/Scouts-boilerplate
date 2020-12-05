@@ -60,7 +60,7 @@
                                                 <x-heroicon-o-mail class="icon"/>
                                             </a>
 
-                                            <a href="" class="text-muted text-decoration-none mr-1">
+                                            <a href="{{ route('kiosk.users.edit', $user) }}" class="text-muted text-decoration-none mr-1">
                                                 <x-heroicon-o-pencil class="icon"/>
                                             </a>
 

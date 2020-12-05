@@ -21,6 +21,7 @@ class BladeComponentServiceProvider extends ServiceProvider
     {
         $this->registerLayoutComponents();
         $this->registerFormComponents();
+        $this->registerUserComponents();
     }
 
     /**
@@ -33,6 +34,16 @@ class BladeComponentServiceProvider extends ServiceProvider
         Blade::component('layouts.app', 'app-layout');
         Blade::component('layouts.kiosk', 'app-kiosk-layout');
         Blade::component('components.flashMessage', 'app-flash-message');
+    }
+
+    /**
+     * Method for registering components that are related to the user section.
+     *
+     * @return void
+     */
+    private function registerUserComponents(): void
+    {
+        Blade::component('kiosk.users._sidenav', 'user-side-navigation');
     }
 
     /**

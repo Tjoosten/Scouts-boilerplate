@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Kiosk\Users;
 
 use App\Actions\Users\DeleteUserAction;
+use App\Actions\Users\UpdateUserAction;
+use App\DataTransferObjects\UserInformationObject;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\User;
 use App\Services\RoleService;
 use App\Services\UserService;
@@ -54,6 +57,28 @@ class UsersController extends Controller
         $this->authorize('update', $user);
 
         return view('kiosk.users.edit', ['user' => $user, 'roles' => $this->roleService->getRoles()]);
+    }
+
+    /**
+     * Method for updating the user in the application.
+     * ---
+     * See the form request class for the request authorization.
+     *
+     * @param  UpdateUserRequest $request          The request entity that contains all the request information.
+     * @param  User              $userEntity       The resource entity from the authenticated user.
+     * @param  UpdateUserAction  $updateUserAction The update action that handles all the needed logic.
+     * @return RedirectResponse
+     */
+    public function update(UpdateUserRequest $request, User $userEntity, UpdateUserAction $updateUserAction): RedirectResponse
+    {
+        $requestData = $request->filled('password')
+            ? UserInformationObject::fromRequest($request)->toArray()
+            : UserInformationObject::fromRequest($request)->except('password')->toArray();
+
+        $updateUserAction->execute($userEntity, $requestData);
+        flash(__('Het gebruikers account van :user is met success aangepast.', ['user' => $userEntity->name]), 'alert-success');
+
+        return redirect()->route('kiosk.users.show', $userEntity);
     }
 
     /**

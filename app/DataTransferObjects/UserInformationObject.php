@@ -15,6 +15,7 @@ class UserInformationObject extends DataTransferObject
     public string|null $name;
     public string|null $email;
     public string|null $password;
+    public string|null $role;
 
     /**
      * Method for mapping the form request data to an object.
@@ -28,6 +29,7 @@ class UserInformationObject extends DataTransferObject
             'name' => $request->get('name'),
             'email' => $request->get('email'),
             'password' => $request->get('password'),
+            'role' => $request->get('role'),
         ]);
     }
 }

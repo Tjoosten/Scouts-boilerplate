@@ -5,6 +5,7 @@ namespace App\Actions\Users;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * Class UpdateUserAction
@@ -22,8 +23,23 @@ class UpdateUserAction
      */
     public function execute(User $user, array $attributes): bool
     {
-        return DB::transaction(static function() use ($user, $attributes): bool {
+        return DB::transaction(function() use ($user, $attributes): bool {
+            if ($this->roleNeedsUpdate($attributes)) {
+                $user->syncRoles($attributes['role']);
+            }
+
             return (new UserService)->updateUser($user, $attributes);
         });
+    }
+
+    /**
+     * Determine is the role needs an update or not.
+     *
+     * @param  array $attributes The new attributes that will stored in the database.
+     * @return bool
+     */
+    private function roleNeedsUpdate(array $attributes): bool
+    {
+        return array_key_exists('role', $attributes) && $attributes['role'] !== null;
     }
 }
