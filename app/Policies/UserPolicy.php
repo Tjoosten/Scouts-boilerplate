@@ -15,6 +15,18 @@ class UserPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the authenticated user can update another user.
+     *
+     * @param  User $user  The resource entity from the authenticated user.
+     * @param  User $model The resource entity  from the given user.
+     * @return bool
+     */
+    public function update(User $user, User $model): bool
+    {
+        return $user->hasAnyRole(['administrator', 'webmaster']) && $user->is($model);
+    }
+
+    /**
      * Determine whether the authenticated user can delete another user.
      *
      * @param  User $user  The resource entity from the authenticated user.

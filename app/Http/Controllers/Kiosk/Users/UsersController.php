@@ -39,6 +39,19 @@ class UsersController extends Controller
     }
 
     /**
+     * @param  User $user
+     * @return Renderable
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function edit(User $user): Renderable
+    {
+        $this->authorize('update', $user);
+
+        return view('kiosk.users.edit', ['user' => $user, 'roles' => $this->roleService->getRoles('dropdown')]);
+    }
+
+    /**
      * Method for deleting an user account in the application.
      *
      * @param  User             $user             The resource entity from the given user.
