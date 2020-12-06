@@ -1,5 +1,5 @@
 <div class="list-group list-group-transparent">
-    <a href="" class="list-group-item list-group-item-action">
+    <a href="{{ route('kiosk.users.show', $user) }}" class="{{ active('kiosk.users.show') }} list-group-item list-group-item-action">
         <x-heroicon-o-eye class="icon mr-2"/> {{ __('Bekijk gebruiker') }}
     </a>
     <a href="" class="list-group-item list-group-item-action">

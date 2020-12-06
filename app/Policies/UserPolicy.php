@@ -15,6 +15,17 @@ class UserPolicy
     use HandlesAuthorization;
 
     /**
+     * Determine whether the authenticated user can view the information from other users or not.
+     *
+     * @param  User $user The resource entity from the authenticated user.
+     * @return bool
+     */
+    public function show(User $user): bool
+    {
+        return $user->hasAnyRole(['administrator', 'webmaster']);
+    }
+
+    /**
      * Determine whether the authenticated user can update another user.
      *
      * @param  User $user  The resource entity from the authenticated user.

@@ -47,10 +47,9 @@ class UsersController extends Controller
     /**
      * Method for displaying the user information in the application.
      *
-     * @todo Implement and embed the user route
      * @todo Create view
      *
-     * @param User $user
+     * @param  User $user The resource entity from the given user.
      * @return Renderable
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException
@@ -59,7 +58,7 @@ class UsersController extends Controller
     {
         $this->authorize('show', $user);
 
-
+        return view('kiosk.users.show', compact('user'));
     }
 
     /**

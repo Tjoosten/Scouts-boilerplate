@@ -52,7 +52,7 @@
                                     </td>
                                     <td>
                                         <span class="float-right">
-                                            <a href="" class="text-muted text-decoration-none mr-3">
+                                            <a href="{{ route('kiosk.users.show', $user) }}" class="text-muted text-decoration-none mr-3">
                                                 <x-heroicon-o-eye class="icon"/>
                                             </a>
 
