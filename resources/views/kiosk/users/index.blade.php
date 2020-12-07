@@ -44,7 +44,7 @@
                             @forelse ($users as $user) {{-- Loop trough the users --}}
                                 <tr>
                                     <td class="text-muted font-weight-bold">{{ $user->name }}</td>
-                                    <td><span class="badge badge-online">{{ __('Actieve gebruiker') }}</td>
+                                    <td><x-user-status-label :user="$user"/></td>
                                     <td>{{ $user->email }}</td>
                                     <td>
                                         {{ $user->created_at->format('d-m-Y') }}

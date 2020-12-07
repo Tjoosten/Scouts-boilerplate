@@ -20,6 +20,11 @@
     color: #10B981;
 }
 
+.badge-nonactive {
+    background-color: #FEE2E2;
+    color: #EF4444;
+}
+
 
 .list-group-transparent .list-group-item {
     border-left: 5px solid transparent;
@@ -240,11 +245,10 @@ body {
 
 .nav-underline .nav-link:hover {
     color: #572600;
-    font-weight: bold;
+    font-weight: 500;
 }
 
 .nav-underline > .active {
     font-weight: 500;
     color: #572600;
-    font-weight: $font-weight-bold;
 }

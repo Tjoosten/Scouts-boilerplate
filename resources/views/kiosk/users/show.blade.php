@@ -26,6 +26,7 @@
                             <p class="card-text text-danger">
                                 {{ __('Het gebruikers account van :user is gedeactiveerd door :creator', ['user' => $user->name]) }}
                             </p>
+                            <hr>
                         @endif
 
                         <table class="table table-borderless mb-0">
@@ -34,12 +35,7 @@
                                     <td class="w-50 pt-1 px-0">
                                         <span class="font-weight-bold text-muted">{{ __('Naam + Achternaam') }}</span> <br>
                                         {{ $user->name }}
-
-                                        @if ($user->isNotBanned())
-                                            <span class="ml-2 badge badge-online">{{ __('Actieve gebruiker') }}</span>
-                                        @else ($user->isBanned())
-                                            <span class="ml-2 badge badge-nonactive">{{ __('Deactivated') }}</span>
-                                        @endif
+                                        <x-user-status-label :user="$user"/>
                                     </td>
                                     <td class="w-50 pt-1">
                                         <span class="font-weight-bold text-muted">{{ __('Email adres') }}</span> <br>

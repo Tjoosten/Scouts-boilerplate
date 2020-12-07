@@ -44,6 +44,7 @@ class BladeComponentServiceProvider extends ServiceProvider
     private function registerUserComponents(): void
     {
         Blade::component('kiosk.users._sidenav', 'user-side-navigation');
+        Blade::component('kiosk.users._statusLabel', 'user-status-label');
     }
 
     /**
