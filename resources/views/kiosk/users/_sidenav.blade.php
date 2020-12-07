@@ -10,7 +10,7 @@
     </a>
 
     @can('deactivate', $user)
-        <a href="{{ route('kiosk.users.deactivate', $user) }}" class="list-group-item list-group-item-action">
+        <a href="{{ route('kiosk.users.deactivate', $user) }}" class="{{ active('kiosk.users.deactivate') }} list-group-item list-group-item-action">
             <x-heroicon-o-lock-closed class="icon mr-2"/> {{ __('Deactiveer gebruiker') }}
         </a>
     @endcan

@@ -27,7 +27,8 @@ Route::group(['middleware' => ['auth', 'kiosk', 'forbid-banned-user']], static f
         Route::patch('/wijzigen/{userEntity}', [UsersController::class, 'update'])->name('kiosk.users.update');
         Route::get('/verwijderen/{user}', [UsersController::class, 'destroy'])->name('kiosk.users.delete');
 
-       // Deactivation routes
-        Route::get('/deactiveer/{user}', [LockController::class, 'index'])->name('kiosk.users.deactivate');
+        // Deactivation routes
+        Route::get('/deactiveer/{user}', [LockController::class, 'create'])->name('kiosk.users.deactivate');
+        Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name('kiosk.users.deactivate');
     });
 });

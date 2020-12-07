@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Kiosk\Users;
 
+use App\Actions\Users\DeactivateAction;
+use App\DataTransferObjects\UserDeactivationObject;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\DeactivateFormRequest;
 use App\Models\User;
 use App\Services\UserService;
 use Cog\Laravel\Ban\Models\Ban;
 use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 
 /**
  * Class LockController
@@ -33,10 +37,32 @@ class LockController extends Controller
      *
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
-    public function index(User $user): Renderable
+    public function create(User $user): Renderable
     {
         $this->authorize('deactivate', $user);
 
         return view('kiosk.users.deactivate', compact('user'));
+    }
+
+    /**
+     * Method for deactivating the user in the application.
+     * ---
+     * See the request class for the authorization check.
+     *
+     * @param  DeactivateFormRequest $request           The request instance that contains all the request information.
+     * @param  User                  $userEntity        The resource entity from the given user.
+     * @param  DeactivateAction      $deactivateAction  The action that handles the deactivation of the user in the storage.
+     * @return RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function store(DeactivateFormRequest $request, User $userEntity, DeactivateAction $deactivateAction): RedirectResponse
+    {
+        $languageKeys = ['user' => $userEntity->name, 'application' => config('app.name')];
+        $deactivateAction->execute($userEntity, UserDeactivationObject::fromRequest($request));
+
+        flash(__('Het gebruikers account van :user is met success gedeactiveerd in :application', $languageKeys), 'alert-warning');
+
+        return redirect()->route('kiosk.users.show', $userEntity);
     }
 }

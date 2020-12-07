@@ -1,7 +1,7 @@
 <x-app-kiosk-layout :title="$user->name">
     <div class="container-fluid py-3">
         <div class="page-header">
-            <h1 class="page-title">{{ __('Gebruikers') }}</h1>
+            <h1 class="page-title text-bruin">{{ __('Gebruikers') }}</h1>
             <div class="page-subtitle">{{ __('Algemene informatie omtrent :user', ['user' => $user->name]) }}</div>
 
             <div class="page-options d-flex">
@@ -22,6 +22,12 @@
                     <h6 class="border-bottom border-gray pb-1 mb-3">{{ __('Algemene informatie omtrent :user', ['user' => $user->name]) }}</h6>
 
                     <div class="table-responsive">
+                        @if ($user->isBanned())
+                            <p class="card-text text-danger">
+                                {{ __('Het gebruikers account van :user is gedeactiveerd door :creator', ['user' => $user->name]) }}
+                            </p>
+                        @endif
+
                         <table class="table table-borderless mb-0">
                             <tbody>
                                 <tr>
@@ -56,7 +62,7 @@
                                     <tr>
                                         <td colspan="2" class="w-100 px-0 pb-0">
                                             <span class="text-muted font-weight-bold">Deactivation reason</span> <br>
-                                            {{ $user->deactivationReason() }}
+                                            {{ $user->bans()->first()->comment }}
                                         </td>
                                     </tr>
                                 @endif
