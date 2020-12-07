@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Cog\Contracts\Ban\Bannable as BannableContract;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Spatie\Permission\Traits\HasRoles;
 
 /**
@@ -16,13 +18,14 @@ use Spatie\Permission\Traits\HasRoles;
  *
  * @package App\Models
  */
-class User extends Authenticatable
+class User extends Authenticatable implements BannableContract
 {
     use HasFactory;
     use Notifiable;
     use ActivityLogging;
     use HasRoles;
     use KioskMethods;
+    use Bannable;
 
     /**
      * The attributes that are mass assignable.

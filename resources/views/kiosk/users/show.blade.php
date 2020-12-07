@@ -28,6 +28,12 @@
                                     <td class="w-50 pt-1 px-0">
                                         <span class="font-weight-bold text-muted">{{ __('Naam + Achternaam') }}</span> <br>
                                         {{ $user->name }}
+
+                                        @if ($user->isNotBanned())
+                                            <span class="ml-2 badge badge-online">{{ __('Actieve gebruiker') }}</span>
+                                        @else ($user->isBanned())
+                                            <span class="ml-2 badge badge-nonactive">{{ __('Deactivated') }}</span>
+                                        @endif
                                     </td>
                                     <td class="w-50 pt-1">
                                         <span class="font-weight-bold text-muted">{{ __('Email adres') }}</span> <br>
@@ -35,16 +41,25 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="w-50 px-0 pb-0 pt-1">
+                                    <td class="w-50 px-0 {{ ($user->isBanned()) ? 'pb-1' : 'pb-0' }} pt-1">
                                         <span class="font-weight-bold text-muted">{{ __('Permissie rol') }}</span> <br>
                                         @forelse ($user->roles as $role)
                                             {{ $role->name }}
                                         @empty
-                                            <heroicon-o-information-circle class="icon"/>
+                                            <x-heroicon-o-information-circle class="icon mr-1"/>
                                             {{ __('De gebruiker heeft op dit moment geen permissie rol.') }}
                                         @endforelse
                                     </td>
                                 </tr>
+
+                                @if ($user->isBanned())
+                                    <tr>
+                                        <td colspan="2" class="w-100 px-0 pb-0">
+                                            <span class="text-muted font-weight-bold">Deactivation reason</span> <br>
+                                            {{ $user->deactivationReason() }}
+                                        </td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
                     </div>

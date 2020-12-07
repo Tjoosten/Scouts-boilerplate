@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Kiosk\DashboardController;
+use App\Http\Controllers\Kiosk\Users\LockController;
 use App\Http\Controllers\Kiosk\Users\UsersController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,15 +16,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['auth', 'kiosk']], static function (): void {
+Route::group(['middleware' => ['auth', 'kiosk', 'forbid-banned-user']], static function (): void {
     Route::get('/', DashboardController::class)->name('kiosk.dashboard');
 
 
     Route::group(['prefix' => 'users'], static function (): void {
-       Route::get('/{filter?}', [UsersController::class, 'index'])->name('kiosk.users.index');
-       Route::get('/gebruiker/{user}', [UsersController::class, 'show'])->name('kiosk.users.show');
-       Route::get('/gebruikers/wijzigen/{user}', [UsersController::class, 'edit'])->name('kiosk.users.edit');
-       Route::patch('/gebruikers/wijzigen/{userEntity}', [UsersController::class, 'update'])->name('kiosk.users.update');
-       Route::get('/gebruikers/verwijderen/{user}', [UsersController::class, 'destroy'])->name('kiosk.users.delete');
+        Route::get('/{filter?}', [UsersController::class, 'index'])->name('kiosk.users.index');
+        Route::get('/gebruiker/{user}', [UsersController::class, 'show'])->name('kiosk.users.show');
+        Route::get('/wijzigen/{user}', [UsersController::class, 'edit'])->name('kiosk.users.edit');
+        Route::patch('/wijzigen/{userEntity}', [UsersController::class, 'update'])->name('kiosk.users.update');
+        Route::get('/verwijderen/{user}', [UsersController::class, 'destroy'])->name('kiosk.users.delete');
+
+       // Deactivation routes
+        Route::get('/deactiveer/{user}', [LockController::class, 'index'])->name('kiosk.users.deactivate');
     });
 });

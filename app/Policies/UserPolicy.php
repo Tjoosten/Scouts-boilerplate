@@ -25,6 +25,11 @@ class UserPolicy
         return $user->hasAnyRole(['administrator', 'webmaster']);
     }
 
+    public function deactivate(User $user, User $model): bool
+    {
+        return $user->isNot($model) && $model->isNotBanned() && $user->hasAnyRole(['administrator', 'webmaster']);
+    }
+
     /**
      * Determine whether the authenticated user can update another user.
      *
@@ -34,7 +39,7 @@ class UserPolicy
      */
     public function update(User $user, User $model): bool
     {
-        return $user->hasAnyRole(['administrator', 'webmaster']) && $user->is($model);
+        return $user->hasAnyRole(['administrator', 'webmaster']) || $user->is($model);
     }
 
     /**

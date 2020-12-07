@@ -65,5 +65,6 @@ class Kernel extends HttpKernel
 
         // Custom middleware
         'kiosk' => \App\Http\Middleware\KioskMiddleware::class,
+        'forbid-banned-user' => \Cog\Laravel\Ban\Http\Middleware\ForbidBannedUser::class,
     ];
 }

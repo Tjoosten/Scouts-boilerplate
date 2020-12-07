@@ -47,8 +47,6 @@ class UsersController extends Controller
     /**
      * Method for displaying the user information in the application.
      *
-     * @todo Create view
-     *
      * @param  User $user The resource entity from the given user.
      * @return Renderable
      *
