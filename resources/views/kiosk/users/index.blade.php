@@ -71,6 +71,7 @@
                                     </td>
                                 </tr>
                             @empty {{-- There are no users found --}}
+
                             @endforelse {{-- END for loop --}}
                         </tbody>
                     </table>

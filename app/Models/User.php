@@ -69,4 +69,10 @@ class User extends Authenticatable implements BannableContract
     {
         return ucwords($name);
     }
+
+
+    public function banInformation()
+    {
+        return $this->bans()->first();
+    }
 }

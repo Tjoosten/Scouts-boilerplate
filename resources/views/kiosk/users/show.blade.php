@@ -24,7 +24,8 @@
                     <div class="table-responsive">
                         @if ($user->isBanned())
                             <p class="card-text text-danger">
-                                {{ __('Het gebruikers account van :user is gedeactiveerd door :creator', ['user' => $user->name]) }}
+                                <x-heroicon-o-exclamation class="icon mr-1"/>
+                                {{ __('Het gebruikers account van :user is gedeactiveerd door :creator', ['user' => $user->name, 'creator' => $user->banInformation()->createdBy->name]) }}
                             </p>
                             <hr>
                         @endif
@@ -58,7 +59,7 @@
                                     <tr>
                                         <td colspan="2" class="w-100 px-0 pb-0">
                                             <span class="text-muted font-weight-bold">Deactivation reason</span> <br>
-                                            {{ $user->bans()->first()->comment }}
+                                            {{ $user->banInformation()->comment }}
                                         </td>
                                     </tr>
                                 @endif
