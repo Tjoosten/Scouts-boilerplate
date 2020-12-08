@@ -15,8 +15,8 @@
                     </button>
                     <div class="dropdown-menu border-0 shadow-sm">
                         <a class="dropdown-item" href="{{ route('kiosk.users.index') }}">{{ __('Alle gebruikers') }}</a>
-                        <a class="dropdown-item" href="">{{ __('Geactiveerde gebruikers') }}</a>
-                        <a class="dropdown-item" href="">{{ __('Gedeactiveerde gebruikers') }}</a>
+                        <a class="dropdown-item" href="{{ route('kiosk.users.index', ['filter' => 'activated']) }}">{{ __('Geactiveerde gebruikers') }}</a>
+                        <a class="dropdown-item" href="{{ route('kiosk.users.index', ['filter' => 'deactivated']) }}">{{ __('Gedeactiveerde gebruikers') }}</a>
                     </div>
                 </div>
 
@@ -71,7 +71,12 @@
                                     </td>
                                 </tr>
                             @empty {{-- There are no users found --}}
-
+                                <tr>
+                                    <td colspan="5" class="text-muted">
+                                        <x-heroicon-o-exclamation class="icon mr-1"/>
+                                        {{ __('Momenteel zijn er geen gebruikers gevonden met de matchende filter.') }}
+                                    </td>
+                                </tr>
                             @endforelse {{-- END for loop --}}
                         </tbody>
                     </table>

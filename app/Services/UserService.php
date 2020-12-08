@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class UserService
@@ -57,6 +58,10 @@ class UserService extends BaseService
      */
     public function getUsers(?string $filter = null): Paginator
     {
-        return $this->paginate();
+        return $this->eloquentModel->when($filter === 'deactivated', static function (Builder $builder): void {
+            $builder->onlyBanned();
+        })->when($filter === 'activated', static function (Builder $builder): void {
+            $builder->withoutBanned();
+        })->paginate();
     }
 }
