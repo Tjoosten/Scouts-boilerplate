@@ -52,7 +52,7 @@ class BladeComponentServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    private function registerFormComponents()
+    private function registerFormComponents(): void
     {
         Blade::component('components.form', 'form');
         Blade::component('components.error', 'error');

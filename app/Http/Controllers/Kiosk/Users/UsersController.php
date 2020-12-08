@@ -75,6 +75,20 @@ class UsersController extends Controller
     }
 
     /**
+     * Method for displaying the create view for a new user.
+     *
+     * @return Renderable
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function create(): Renderable
+    {
+        $this->authorize('create', User::class);
+
+        return view('kiosk.users.create', ['roles' => $this->roleService->getRoles()]);
+    }
+
+    /**
      * Method for updating the user in the application.
      * ---
      * See the form request class for the request authorization.
