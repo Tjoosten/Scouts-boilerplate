@@ -6,7 +6,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container pt-4">
         <div class="row">
             <div class="col-3">
                 <h5 class="text-bijna-zwart font-weight-bold">{{ __('Account informatie') }}</h5>
