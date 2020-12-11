@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Kiosk\DashboardController;
+use App\Http\Controllers\Kiosk\Users\ActivityController;
 use App\Http\Controllers\Kiosk\Users\LockController;
 use App\Http\Controllers\Kiosk\Users\SearchController;
 use App\Http\Controllers\Kiosk\Users\UsersController;
@@ -24,6 +25,7 @@ Route::group(['middleware' => ['auth', 'kiosk', 'forbid-banned-user']], static f
     Route::group(['prefix' => 'users'], static function (): void {
         Route::get('/nieuw', [UsersController::class, 'create'])->name('kiosk.users.create');
         Route::post('/nieuw', [UsersController::class, 'store'])->name('kiosk.users.store');
+        Route::get('/activiteiten-log/{user}', ActivityController::class)->name('kiosk.users.activities');
         Route::get('/zoeken', SearchController::class)->name('kiosk.users.search');
         Route::get('/{filter?}', [UsersController::class, 'index'])->name('kiosk.users.index');
         Route::get('/gebruiker/{user}', [UsersController::class, 'show'])->name('kiosk.users.show');

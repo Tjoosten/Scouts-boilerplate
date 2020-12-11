@@ -21,7 +21,7 @@
                 </div>
 
                 <form method="GET" action="{{ route('kiosk.users.search') }}" class="form-inline">
-                    <input type="text" name="term" value="{{ request('term') }}" class="form-control form-search border-0 shadow-sm" placeholder="{{ __('Zoek bij naam of email adres') }}">
+                    <input type="text" name="term" value="{{ request('term') }}" class="form-control form-search border-0 shadow-sm"    placeholder="{{ __('Zoek bij naam of email adres') }}">
                 </form>
             </div>
         </div>
