@@ -5,7 +5,7 @@
             <div class="page-subtitle">{{ __('Overzicht van alle gebruikers in :application', ['application' => config('app.name')]) }}</div>
 
             <div class="page-options d-flex">
-                <a href="" class="btn btn-primary border-0 shadow-sm">
+                <a href="{{ route('kiosk.users.create') }}" class="btn btn-primary border-0 shadow-sm">
                     <x-heroicon-o-user-add class="icon"/>
                 </a>
 

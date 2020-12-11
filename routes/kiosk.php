@@ -21,6 +21,8 @@ Route::group(['middleware' => ['auth', 'kiosk', 'forbid-banned-user']], static f
 
 
     Route::group(['prefix' => 'users'], static function (): void {
+        Route::get('/nieuw', [UsersController::class, 'create'])->name('kiosk.users.create');
+        Route::post('/nieuw', [UsersController::class, 'store'])->name('kiosk.users.store');
         Route::get('/{filter?}', [UsersController::class, 'index'])->name('kiosk.users.index');
         Route::get('/gebruiker/{user}', [UsersController::class, 'show'])->name('kiosk.users.show');
         Route::get('/wijzigen/{user}', [UsersController::class, 'edit'])->name('kiosk.users.edit');

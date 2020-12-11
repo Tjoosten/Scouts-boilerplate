@@ -17,12 +17,6 @@ class UserInformationObject extends DataTransferObject
     public string|null $password;
     public string|null $role;
 
-    /**
-     * Method for mapping the form request data to an object.
-     *
-     * @param  Request $request The request entity that contains all the request information.
-     * @return static
-     */
     public static function fromRequest(Request $request): static
     {
         return new static([

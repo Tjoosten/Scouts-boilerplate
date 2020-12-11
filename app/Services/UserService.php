@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\Request;
 
 /**
  * Class UserService
@@ -63,5 +64,18 @@ class UserService extends BaseService
         })->when($filter === 'activated', static function (Builder $builder): void {
             $builder->withoutBanned();
         })->paginate();
+    }
+
+    public function createUser(Request $request, array $userInformation): User
+    {
+        $createdUser = $this->eloquentModel->create($userInformation);
+
+        if ($request->user()->is(model: auth()->user())) {
+            $request->user()->logActivity('Gebruikers', __('Heeft :user als :role toegevoegd in :application', [
+                'user' => $createdUser->name, 'role' => $request->role, 'application' => config('app.name')
+            ]));
+        }
+
+        return $createdUser;
     }
 }

@@ -58,10 +58,7 @@ class LockController extends Controller
      */
     public function store(DeactivateFormRequest $request, User $userEntity, DeactivateAction $deactivateAction): RedirectResponse
     {
-        $languageKeys = ['user' => $userEntity->name, 'application' => config('app.name')];
         $deactivateAction->execute($userEntity, UserDeactivationObject::fromRequest($request));
-
-        flash(__('Het gebruikers account van :user is met success gedeactiveerd in :application', $languageKeys), 'alert-warning');
 
         return redirect()->route('kiosk.users.show', $userEntity);
     }

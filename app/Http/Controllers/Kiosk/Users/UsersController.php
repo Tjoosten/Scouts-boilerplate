@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Kiosk\Users;
 
+use App\Actions\Users\CreateUserAction;
 use App\Actions\Users\DeleteUserAction;
 use App\Actions\Users\UpdateUserAction;
 use App\DataTransferObjects\UserInformationObject;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Users\CreateUserRequest;
 use App\Http\Requests\Users\UpdateUserRequest;
 use App\Models\User;
 use App\Services\RoleService;
@@ -86,6 +88,17 @@ class UsersController extends Controller
         $this->authorize('create', User::class);
 
         return view('kiosk.users.create', ['roles' => $this->roleService->getRoles()]);
+    }
+
+    /**
+     * @see \App\Http\Requests\Users\CreateUserRequest::authorize()
+     * @see \App\Policies\UserPolicy::create()
+     */
+    public function store(CreateUserRequest $request, CreateUserAction $createUserAction): RedirectResponse
+    {
+        $user = $createUserAction->execute($request, UserInformationObject::fromRequest($request));
+
+        return redirect()->route('kiosk.users.show', $user);
     }
 
     /**
