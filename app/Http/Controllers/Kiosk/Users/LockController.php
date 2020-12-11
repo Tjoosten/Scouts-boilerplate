@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Kiosk\Users;
 
+use App\Actions\Users\ActivateAction;
 use App\Actions\Users\DeactivateAction;
 use App\DataTransferObjects\UserDeactivationObject;
 use App\Http\Controllers\Controller;
@@ -63,8 +64,13 @@ class LockController extends Controller
         return redirect()->route('kiosk.users.show', $userEntity);
     }
 
-    public function destroy(User $userEntity): RedirectResponse
+    public function destroy(User $userEntity, ActivateAction $activateAction): RedirectResponse
     {
+        $this->authorize('activate', $userEntity);
 
+        $activateAction->execute($userEntity);
+        flash(__('De gebruikers account van :name is terug geactiveerd.', ['name' => $userEntity->name]), 'alert-success');
+
+        return redirect()->route('kiosk.users.show', $userEntity);
     }
 }

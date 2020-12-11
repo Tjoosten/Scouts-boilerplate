@@ -32,5 +32,6 @@ Route::group(['middleware' => ['auth', 'kiosk', 'forbid-banned-user']], static f
         // Deactivation routes
         Route::get('/deactiveer/{user}', [LockController::class, 'create'])->name('kiosk.users.deactivate');
         Route::post('/deactiveer/{userEntity}', [LockController::class, 'store'])->name('kiosk.users.deactivate');
+        Route::get('/activeer/{userEntity}', [LockController::class, 'destroy'])->name('kiosk.users.activate');
     });
 });

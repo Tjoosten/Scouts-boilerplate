@@ -16,7 +16,7 @@
     @endcan
 
     @can ('activate', $user)
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{ route('kiosk.users.activate', $user) }}" class="list-group-item list-group-item-action">
             <x-heroicon-o-lock-open class="icon mr-2"/> {{ __('Activeer gebruiker') }}
         </a>
     @endcan
