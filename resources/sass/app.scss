@@ -208,6 +208,26 @@ body {
     margin-bottom: 60px; // Margin bottom by footer height
 }
 
+.nav-overflow {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    //padding-bottom: 1px;
+}
+
+.nav-settings {
+    border-bottom: 1px solid darken($body-bg, 10%);
+
+    .nav-link.active,
+    .nav-link:hover {
+        font-weight: bold;
+        color: map-get($sgv-colors, 'bruin');
+        border-bottom: 1px solid;
+        background-color: transparent;
+        border-color: transparent transparent map-get($sgv-colors, 'bruin'), 15%;
+    }
+ }
+
 .nav-scroller {
     position: relative;
     z-index: 2;
