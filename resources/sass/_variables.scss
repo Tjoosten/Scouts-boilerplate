@@ -40,7 +40,7 @@ $dropdown-bg: #fff;
 $primary: map-get($sgv-colors, 'donkergroen');
 $warning: map-get($sgv-colors, 'oranje');
 $danger:  map-get($sgv-colors, 'rood');
-$success: map-get($sgv-colors, 'donkergroen');
+$success: $green;
 $info:    map-get($sgv-colors, 'donkergroen');
 
 $input-disabled-bg: #ddd;

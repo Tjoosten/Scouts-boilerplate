@@ -482,7 +482,7 @@ eval("module.exports = function(module) {\n\tif (!module.webpackPolyfill) {\n\t\
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXBwLmpzPzZkNDAiXSwibmFtZXMiOlsicmVxdWlyZSJdLCJtYXBwaW5ncyI6IkFBQUFBLG1CQUFPLENBQUMsZ0RBQUQsQ0FBUCIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9hcHAuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJyZXF1aXJlKCcuL2Jvb3RzdHJhcCcpO1xuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
+eval("__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\"); // Auto hide success messages from forms.\n\n\n$('div.col.my-auto.text-success.font-weight-bold').not('.success-message').delay(4000).fadeOut(350);\n$('div.alert').not('.alert-important').delay(4000).fadeOut(350);//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXBwLmpzPzZkNDAiXSwibmFtZXMiOlsicmVxdWlyZSIsIiQiLCJub3QiLCJkZWxheSIsImZhZGVPdXQiXSwibWFwcGluZ3MiOiJBQUFBQSxtQkFBTyxDQUFDLGdEQUFELENBQVAsQyxDQUVBOzs7QUFDQUMsQ0FBQyxDQUFDLCtDQUFELENBQUQsQ0FBbURDLEdBQW5ELENBQXVELGtCQUF2RCxFQUEyRUMsS0FBM0UsQ0FBaUYsSUFBakYsRUFBdUZDLE9BQXZGLENBQStGLEdBQS9GO0FBQ0FILENBQUMsQ0FBQyxXQUFELENBQUQsQ0FBZUMsR0FBZixDQUFtQixrQkFBbkIsRUFBdUNDLEtBQXZDLENBQTZDLElBQTdDLEVBQW1EQyxPQUFuRCxDQUEyRCxHQUEzRCIsImZpbGUiOiIuL3Jlc291cmNlcy9qcy9hcHAuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJyZXF1aXJlKCcuL2Jvb3RzdHJhcCcpO1xuXG4vLyBBdXRvIGhpZGUgc3VjY2VzcyBtZXNzYWdlcyBmcm9tIGZvcm1zLlxuJCgnZGl2LmNvbC5teS1hdXRvLnRleHQtc3VjY2Vzcy5mb250LXdlaWdodC1ib2xkJykubm90KCcuc3VjY2Vzcy1tZXNzYWdlJykuZGVsYXkoNDAwMCkuZmFkZU91dCgzNTApO1xuJCgnZGl2LmFsZXJ0Jykubm90KCcuYWxlcnQtaW1wb3J0YW50JykuZGVsYXkoNDAwMCkuZmFkZU91dCgzNTApO1xuIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
 
 /***/ }),
 
@@ -515,8 +515,8 @@ eval("// removed by extract-text-webpack-plugin//# sourceURL=[module]\n//# sourc
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\Gebruiker\Documents\GitHub\lease-app\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\Gebruiker\Documents\GitHub\lease-app\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/timjoosten/Documents/personal-open-source/Scouts-boilerplate/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/timjoosten/Documents/personal-open-source/Scouts-boilerplate/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
