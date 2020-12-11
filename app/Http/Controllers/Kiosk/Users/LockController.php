@@ -62,4 +62,9 @@ class LockController extends Controller
 
         return redirect()->route('kiosk.users.show', $userEntity);
     }
+
+    public function destroy(User $userEntity): RedirectResponse
+    {
+
+    }
 }

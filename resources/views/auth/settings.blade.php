@@ -1,5 +1,5 @@
 <x-app-layout :title="__('Account instellingen')">
-    <div class="container pb-4">
+    <div class="container">
         <div class="page-header">
             <h1 class="page-title text-donkergroen">{{ $user->name }}</h1>
             <div class="page-subtitle">{{ __('account instellingen') }}</div>

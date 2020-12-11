@@ -48,6 +48,11 @@ class UserPolicy
         return $user->isNot($model) && $model->isNotBanned() && $user->hasAnyRole(['administrator', 'webmaster']);
     }
 
+    public function activate(User $user, User $model): bool
+    {
+        return $model->isBanned() && $user->isNot($model) && $user->hasAnyRole(['administrator', 'webmaster']);
+    }
+
     /**
      * Determine whether the authenticated user can update another user.
      *

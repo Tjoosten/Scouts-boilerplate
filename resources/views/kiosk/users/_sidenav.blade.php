@@ -15,6 +15,12 @@
         </a>
     @endcan
 
+    @can ('activate', $user)
+        <a href="" class="list-group-item list-group-item-action">
+            <x-heroicon-o-lock-open class="icon mr-2"/> {{ __('Activeer gebruiker') }}
+        </a>
+    @endcan
+
     <a href="{{ route('kiosk.users.delete', $user) }}" class="list-group-item list-group-item-action">
         <x-heroicon-o-trash class="icon mr-2 text-danger"/> {{ __('Verwijder gebruiker') }}
     </a>
