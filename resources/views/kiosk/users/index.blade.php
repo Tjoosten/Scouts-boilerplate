@@ -82,6 +82,17 @@
                     </table>
                 </div>
             </div>
+            
+            @if ($users->hasPages())
+                <div class="card-footer border-top-0">
+                    <div class="row">
+                        <div class="col">{{ $users->links() }}</div>
+                        <div class="col text-secondary text-right my-auto">
+                            {{ $users->firstItem() }} tot {{ $users->lastItem() }} van {{ $users->total() }} gebruikers
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </x-app-kiosk-layout>
