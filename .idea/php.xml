@@ -120,6 +120,7 @@
       <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
       <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
       <path value="$PROJECT_DIR$/vendor/cybercog/laravel-ban" />
+      <path value="$PROJECT_DIR$/vendor/jasonmccreary/laravel-test-assertions" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />
