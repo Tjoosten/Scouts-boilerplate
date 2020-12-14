@@ -36,6 +36,6 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v2.3.0
         with:
           commit_message: PHP CS changes
-          branch: ${{ steps.extract_back.outputs.branch }}
+          branch: ${{ steps.extract_branch.outputs.branch }}
         env:
           GITHUB_TOKEN: ${{ secrets.GTIHUB_TOKEN }}
