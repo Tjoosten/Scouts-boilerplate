@@ -38,4 +38,4 @@ jobs:
       - name: Run PHPUnit
         run: ./vendor/bin/phpunit
         env:
-          DB_PASSWORD: password
+          CodeDB_PASSWORD: password
