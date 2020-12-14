@@ -38,4 +38,4 @@ jobs:
           commit_message: PHP CS changes
           branch: ${{ steps.extract_branch.outputs.branch }}
         env:
-          GITHUB_TOKEN: ${{ secrets.GTIHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
