@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "zakmes/scouts-boilerplate",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The boilerplate for scouting related projects.",
     "keywords": [
         "framework",
         "laravel"
@@ -31,6 +31,7 @@
         "laravel/telescope": "^4.3",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",
+        "phpstan/phpstan": "^0.12.63",
         "phpunit/phpunit": "^9.3.3"
     },
     "config": {
