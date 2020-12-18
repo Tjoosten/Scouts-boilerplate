@@ -68,8 +68,6 @@ class AccountController extends Controller
     /**
      * Method for deleting a user account in the application.
      *
-     * @todo Implement authorization policy.
-     *
      * @param  Request          $request          The request entity that contains all the request information.
      * @param  DeleteUserAction $deleteUserAction The action that handles the account deletion in the application.
      * @return RedirectResponse
