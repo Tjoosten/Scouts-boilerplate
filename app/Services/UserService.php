@@ -78,4 +78,16 @@ class UserService extends BaseService
 
         return $createdUser;
     }
+
+    public function searchUsers(string|null $term): Paginator
+    {
+        if ($term === null) {
+            return $this->getUsers();
+        };
+
+        return $this->eloquentModel
+            ->where('name', 'LIKE', "%{$term}%")
+            ->orWhere('email', 'LIKE', "%{$term}%")
+            ->paginate();
+    }
 }

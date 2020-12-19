@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "zakmes/scouts-boilerplate",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "The boilerplate for scouting related projects.",
     "keywords": [
         "framework",
         "laravel"
@@ -27,6 +27,7 @@
         "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
+        "jasonmccreary/laravel-test-assertions": "^1.0",
         "laravel/telescope": "^4.3",
         "mockery/mockery": "^1.4.2",
         "nunomaduro/collision": "^5.0",

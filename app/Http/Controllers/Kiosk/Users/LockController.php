@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Kiosk\Users;
 
+use App\Actions\Users\ActivateAction;
 use App\Actions\Users\DeactivateAction;
 use App\DataTransferObjects\UserDeactivationObject;
 use App\Http\Controllers\Controller;
@@ -19,22 +20,12 @@ use Illuminate\Http\RedirectResponse;
  */
 class LockController extends Controller
 {
-    /**
-     * LockController constructor.
-     *
-     * @param  UserService $userService The abstraction layer for all the logic that is related to the users.
-     * @return void
-     */
     public function __construct(
         private UserService $userService
     ) {}
 
     /**
-     * Method for displaying the deactivation view for the given user.
-     *
-     * @param  User $user The resource entity from the given user.
-     * @return Renderable
-     *
+     * @see    \App\Policies\UserPolicy::deactivate()
      * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function create(User $user): Renderable
@@ -44,17 +35,8 @@ class LockController extends Controller
         return view('kiosk.users.deactivate', compact('user'));
     }
 
-    /**
-     * Method for deactivating the user in the application.
-     * ---
-     * See the request class for the authorization check.
-     *
-     * @param  DeactivateFormRequest $request           The request instance that contains all the request information.
-     * @param  User                  $userEntity        The resource entity from the given user.
-     * @param  DeactivateAction      $deactivateAction  The action that handles the deactivation of the user in the storage.
-     * @return RedirectResponse
-     *
-     * @throws \Illuminate\Auth\Access\AuthorizationException
+    /* @see \App\Policies\UserPolicy::deactivate()
+     * @see \App\Http\Requests\Users\DeactivateFormRequest::authorize()
      */
     public function store(DeactivateFormRequest $request, User $userEntity, DeactivateAction $deactivateAction): RedirectResponse
     {
@@ -63,8 +45,17 @@ class LockController extends Controller
         return redirect()->route('kiosk.users.show', $userEntity);
     }
 
-    public function destroy(User $userEntity): RedirectResponse
+    /**
+     * @see    \App\Policies\UserPolicy::activate()
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function destroy(User $userEntity, ActivateAction $activateAction): RedirectResponse
     {
+        $this->authorize('activate', $userEntity);
 
+        $activateAction->execute($userEntity);
+        flash(__('De gebruikers account van :name is terug geactiveerd.', ['name' => $userEntity->name]), 'alert-success');
+
+        return redirect()->route('kiosk.users.show', $userEntity);
     }
 }

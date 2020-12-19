@@ -14,13 +14,6 @@ use Spatie\DataTransferObject\DataTransferObject;
  */
 class DeactivateAction
 {
-    /**
-     * Method for processing the user deactivation in the application.
-     *
-     * @param  User               $user               The storage entity from the given user.
-     * @param  DataTransferObject $dataTransferObject The information object that needs to be stored.
-     * @return void
-     */
     public function execute(User $user, DataTransferObject $dataTransferObject): void
     {
         $authUser = auth()->user();

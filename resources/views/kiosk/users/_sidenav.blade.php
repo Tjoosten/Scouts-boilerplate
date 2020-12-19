@@ -2,7 +2,7 @@
     <a href="{{ route('kiosk.users.show', $user) }}" class="{{ active('kiosk.users.show') }} list-group-item list-group-item-action">
         <x-heroicon-o-eye class="icon mr-2"/> {{ __('Bekijk gebruiker') }}
     </a>
-    <a href="" class="list-group-item list-group-item-action">
+    <a href="{{ route('kiosk.users.activities', $user) }}" class="{{ active('kiosk.users.activities') }} list-group-item list-group-item-action">
         <x-heroicon-o-view-list class="icon mr-2"/> {{ __('Gebruikers activiteiten') }}
     </a>
     <a href="{{ route('kiosk.users.edit', $user) }}" class="{{ active('kiosk.users.edit') }} list-group-item list-group-item-action">
@@ -16,7 +16,7 @@
     @endcan
 
     @can ('activate', $user)
-        <a href="" class="list-group-item list-group-item-action">
+        <a href="{{ route('kiosk.users.activate', $user) }}" class="list-group-item list-group-item-action">
             <x-heroicon-o-lock-open class="icon mr-2"/> {{ __('Activeer gebruiker') }}
         </a>
     @endcan

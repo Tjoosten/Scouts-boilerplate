@@ -22,6 +22,7 @@ use Illuminate\Http\RedirectResponse;
  */
 class UsersController extends Controller
 {
+    /** @codeCoverageIgnore */
     public function __construct(
         private UserService $userService,
         private RoleService $roleService
@@ -75,7 +76,7 @@ class UsersController extends Controller
 
     public function update(UpdateUserRequest $request, User $userEntity, UpdateUserAction $updateUserAction): RedirectResponse
     {
-        $requestData = $request->filled('password')
+        $requestData = UserInformationObject::fromRequest($request)->password !== null
             ? UserInformationObject::fromRequest($request)->toArray()
             : UserInformationObject::fromRequest($request)->except('password')->toArray();
 
