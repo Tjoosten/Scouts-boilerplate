@@ -12,10 +12,9 @@ use Illuminate\Http\Request;
 
 class SecurityController extends Controller
 {
-    /** @todo needs testing */
     public function index(Request $request): Renderable
     {
-        return view('account.security', ['user' => $request->user()]);
+        return view('auth.settings.security', ['user' => $request->user()]);
     }
 
     public function update(SecuritySettingsRequest $request, UpdateUserAction $updateUserAction): RedirectResponse
@@ -25,6 +24,6 @@ class SecurityController extends Controller
 
         session()->flash('securityUpdated', ['success' => $securityUpdate]);
 
-        return redirect()->route('account.settings');
+        return redirect()->route('account.settings.security');
     }
 }

@@ -14,7 +14,7 @@ class InformationController extends Controller
 {
     public function index(Request $request): Renderable
     {
-        return view('auth.settings', ['user' => $request->user()]);
+        return view('auth.settings.information', ['user' => $request->user()]);
     }
 
     public function update(InformationSettingsRequest $request, UpdateUserAction $updateUserAction): RedirectResponse
