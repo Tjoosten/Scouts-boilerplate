@@ -6,23 +6,18 @@
         </div>
     </div>
 
-    <div class="container pt-4">
+    <div class="container pt-3">
         <div class="row">
-            <div class="col-12 pt-3 pb-4">
+            <div class="col-12 pb-4">
                 <ul class="nav-settings nav-overflow nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">
+                        <a class="nav-link active" href="{{ route('account.settings.information') }}">
                             <x-heroicon-o-information-circle class="icon mr-1"/> {{ __('Informatie') }}
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('account.settings.security') }}">
                             <x-heroicon-o-key class="icon mr-1"/> {{ __('Beveiliging') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <x-heroicon-o-bell class="icon mr-1"/> {{ __('Notificaties') }}
                         </a>
                     </li>
                 </ul>
