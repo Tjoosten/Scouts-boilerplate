@@ -44,7 +44,7 @@
                                     <x-heroicon-o-globe class="icon text-bruin mr-1"/> {{ __('Website') }}
                                 </a>
 
-                                <a class="dropdown-item" href="{{ route('account.settings') }}">
+                                <a class="dropdown-item" href="{{ route('account.settings.information') }}">
                                     <x-heroicon-o-adjustments class="color-bruin icon mr-1"/> {{ __('Instellingen') }}
                                 </a>
 

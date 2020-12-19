@@ -73,7 +73,7 @@
                                     </a>
                                 @endif
 
-                                <a href="{{ route('account.settings') }}" class="dropdown-item">
+                                <a href="{{ route('account.settings.information') }}" class="dropdown-item">
                                     <x-heroicon-o-adjustments class="color-bruin icon mr-1"/> {{ __('Instellingen') }}
                                 </a>
 

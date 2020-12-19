@@ -11269,6 +11269,25 @@ body {
   margin-bottom: 60px;
 }
 
+.nav-overflow {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.nav-settings {
+  border-bottom: 1px solid #d1ccbc;
+}
+
+.nav-settings .nav-link.active,
+.nav-settings .nav-link:hover {
+  font-weight: bold;
+  color: #572600;
+  border-bottom: 1px solid;
+  background-color: transparent;
+  border-color: transparent transparent #572600, 15%;
+}
+
 .nav-scroller {
   position: relative;
   z-index: 2;
