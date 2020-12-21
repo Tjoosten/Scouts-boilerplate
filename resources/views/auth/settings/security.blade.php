@@ -73,7 +73,7 @@
                             @endif
 
                             <p class="card-text">
-                                {{ __('Indien nodig kunt u op al uw apparaten uitleggen bij al uw andere browsersessies.') }}
+                                {{ __('Indien nodig kunt u op al uw apparaten uitloggen bij al uw andere browsersessies.') }}
                                 {{ __('Enkele van uw recente sessies staan hieronder vermeld, deze lijst is echter mogelijk niet volledig.') }}
                                 {{ __('Als u denkt dat uw account is gehackt, raden we u ook aan om je wachtwoord bij te werken.') }}
                             </p>

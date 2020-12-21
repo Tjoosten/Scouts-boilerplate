@@ -13,8 +13,16 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
+/**
+ * Class SecurityController
+ *
+ * @package App\Http\Controllers\Front\Settings
+ */
 class SecurityController extends Controller
 {
+    /**
+     * Method for displaying the security settings for the user account.
+     */
     public function index(Request $request, UserSessionService $userSessionService): Renderable
     {
         return view('auth.settings.security', [
@@ -26,10 +34,6 @@ class SecurityController extends Controller
 
     /**
      * Method for updating the user password information in the application.
-     *
-     * @param  SecuritySettingsRequest $request
-     * @param  UpdateUserAction        $updateUserAction
-     * @return RedirectResponse
      */
     public function update(SecuritySettingsRequest $request, UpdateUserAction $updateUserAction): RedirectResponse
     {
@@ -43,10 +47,6 @@ class SecurityController extends Controller
 
     /**
      * Method for deleting all the other browser session from the authenticated user.
-     *
-     * @param  OtherSessionsRequest $request
-     * @param  UserSessionService   $userSessionService
-     * @return RedirectResponse
      */
     public function destroy(OtherSessionsRequest $request, UserSessionService $userSessionService): RedirectResponse
     {

@@ -83,11 +83,21 @@ class UserSessionService
         });
     }
 
+    /**
+     * Determine if the user has other sessions than the current authenticated session.
+     *
+     * @return bool
+     */
     public function canLogoutOtherSession(): bool
     {
         return $this->otherSessions()->count() > 0;
     }
 
+    /**
+     * The query builder for getting all the current other user sessions.
+     *
+     * @return Builder
+     */
     public function otherSessions(): Builder
     {
         return DB::table($this->sessionDatabaseTable())
@@ -95,6 +105,12 @@ class UserSessionService
             ->where('id', '!=', request()->session()->getId());
     }
 
+    /**
+     * Method for logging all the browser sessions out and deleted them.
+     *
+     * @param  string $password The password that the user has filled in.
+     * @return void
+     */
     public function logoutOtherBrowserSessions(string $password): void
     {
         if ($this->sessionDatabaseTable() && ! $this->canLogoutOtherSession()) {
