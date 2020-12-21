@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
         Route::patch('/informatie', [InformationController::class, 'update'])->name('account.settings.information');
         Route::get('/security', [SecurityController::class, 'index'])->name('account.settings.security');
         Route::patch('/security', [SecurityController::class, 'update'])->name('account.settings.security');
+        Route::post('/remove-sessions', [SecurityController::class, 'destroy'])->name('account.delete-sessions');
     });
 
    Route::get('/home', DashboardController::class)->name('home');
