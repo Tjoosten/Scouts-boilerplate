@@ -11,6 +11,14 @@
     .text-#{$name}  { color: $code; }             // (3)
 }
 
+.text-gray-600 {
+    color: #4B5563;
+}
+
+.text-gray-info {
+    color: #6B7280;
+}
+
 .form-search {
     width: 290px !important;
 }
@@ -58,6 +66,10 @@
         font-weight: bold;
         color: map-get($sgv-colors, 'bruin');
     }
+}
+
+.modal-footer {
+    background-color: rgba(0, 0, 0, 0.03);
 }
 
 /// ----------------------------------------------------------
@@ -220,7 +232,6 @@ body {
 
     .nav-link.active,
     .nav-link:hover {
-        font-weight: bold;
         color: map-get($sgv-colors, 'bruin');
         border-bottom: 1px solid;
         background-color: transparent;
