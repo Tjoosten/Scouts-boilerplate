@@ -2,7 +2,7 @@
     <div class="container">
         <div class="page-header">
             <h1 class="page-title text-donkergroen">{{ $user->name }}</h1>
-            <div class="page-subtitle">{{ __('account instellingen') }}</div>
+            <div class="page-subtitle">{{ __('Informatie instellingen') }}</div>
         </div>
     </div>
 
