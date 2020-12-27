@@ -45,6 +45,9 @@ class BladeComponentServiceProvider extends ServiceProvider
     {
         Blade::component('kiosk.users._sidenav', 'user-side-navigation');
         Blade::component('kiosk.users._statusLabel', 'user-status-label');
+
+        // Two factor authentication components
+        Blade::component('auth.settings._setup-2fa', 'setup-two-factor-authentication');
     }
 
     /**

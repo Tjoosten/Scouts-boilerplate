@@ -56,6 +56,23 @@
             </div>
         </div>
 
+        @if (auth()->user()->twoFactorFeatureEnabled())
+            <hr class="my-4">
+
+            <div class="row">
+                <div class="col-3">
+                    <h5 class="text-bijna-zwart font-weight-bold">{{ __('2FA authenticatie') }}</h5>
+                    <p class="small text-muted">{{ __('Voeg een extra laag beveiliging toe aan je account met 2FA authenticatie') }}</p>
+                </div>
+
+                <div class="offset-1 col-8">
+                    @if (auth()->user()->canSetupTwoFactorAuthentication())
+                        <x-setup-two-factor-authentication :url="route('account.settings.generate2faSecret')"/>
+                    @endif
+                </div>
+            </div>
+        @endif
+
         @if ($authSessions->count() > 0)
             <hr class="my-4">
 

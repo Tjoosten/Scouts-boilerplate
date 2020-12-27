@@ -13,6 +13,7 @@ use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Permission\Traits\HasRoles;
+use App\Models\Traits\TwoFactorAuthMethods;
 
 /**
  * Class User
@@ -28,6 +29,7 @@ class User extends Authenticatable implements BannableContract
     use KioskMethods;
     use Bannable;
     use CausesActivity;
+    use TwoFactorAuthMethods;
 
     /**
      * The attributes that are mass assignable.

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\TwoFactorAuthController;
 use App\Http\Controllers\Front\DashboardController;
 use App\Http\Controllers\Front\AccountController;
 use App\Http\Controllers\Front\Settings\DeleteController;
@@ -21,8 +22,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+
 Route::get('/', WelcomeController::class)->name('welcome');
 
+// Account settings routes
 Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function () {
     Route::delete('/Account-verwijderen', DeleteController::class)->name('account.delete');
 
@@ -32,8 +35,16 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
         Route::get('/security', [SecurityController::class, 'index'])->name('account.settings.security');
         Route::patch('/security', [SecurityController::class, 'update'])->name('account.settings.security');
         Route::post('/remove-sessions', [SecurityController::class, 'destroy'])->name('account.delete-sessions');
+
+        // Two factor authentication route.
+        if (config('google2fa.enabled')) {
+            Route::group(['prefix' => '2fa'], static function (): void {
+                Route::post('/challenge', [TwoFactorAuthController::class, 'challenge'])->name('account.settings.generate2faSecret');
+            });
+        }
     });
 
+   // Application routes
    Route::get('/home', DashboardController::class)->name('home');
 });
 
