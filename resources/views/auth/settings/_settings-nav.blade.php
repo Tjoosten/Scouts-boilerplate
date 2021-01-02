@@ -10,5 +10,11 @@
                 <x-heroicon-o-key class="icon mr-1"/> {{ __('Beveiliging') }}
             </a>
         </li>
+
+        @if (config('boilerplate.features.api'))
+            <a class="nav-link {{ active('api.tokens') }}" href="{{ route('api.tokens') }}">
+                <x-heroicon-o-code class="icon mr-1"/> {{ __('API tokens') }}
+            </a>
+        @endif
     </ul>
 </div>
