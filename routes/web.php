@@ -6,6 +6,7 @@ use App\Http\Controllers\Front\AccountController;
 use App\Http\Controllers\Front\Settings\DeleteController;
 use App\Http\Controllers\Front\Settings\InformationController;
 use App\Http\Controllers\Front\Settings\SecurityController;
+use App\Http\Controllers\Front\Settings\TokensController;
 use App\Http\Controllers\Front\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -44,7 +45,13 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
         }
     });
 
-   // Application routes
-   Route::get('/home', DashboardController::class)->name('home');
+    // Personal access tokens routes
+    if (config('boilerplate.features.api')) {
+        Route::group(['prefix' => 'api'], static function (): void {
+            Route::get('tokens', [TokensController::class, 'index'])->name('api.tokens');
+        });
+    }
+
+    Route::get('/home', DashboardController::class)->name('home');
 });
 

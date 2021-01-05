@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\Traits\TwoFactorAuthMethods;
@@ -30,6 +31,7 @@ class User extends Authenticatable implements BannableContract
     use Bannable;
     use CausesActivity;
     use TwoFactorAuthMethods;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
