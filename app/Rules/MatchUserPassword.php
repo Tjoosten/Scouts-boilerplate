@@ -23,7 +23,7 @@ class MatchUserPassword implements Rule
     /**
      * {@inheritDoc}
      */
-    public function message()
+    public function message(): string
     {
         return __('Het opgegeven wachtwoord komt niet overeen met je huidige wachtwoord.');
     }

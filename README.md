@@ -1,61 +1,46 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+![Scouts en Gidsen Vlaanden](https://www.scoutsengidsenvlaanderen.be/files/paginas/scoutingdasdurven_sgvlime_0.jpg)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Scouts boilerplate 
 
-## About Laravel 8.4.4
+Deze boilerplate heeft als doel om een vlotte start te maken met je idee omtrent web platform voor scouting groepen. 
+Enkele features zijn standaard geimplementeerd. Zoals user management, acount instellingen en authenticatie. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Installatie 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Om deze boilerplate te gebruiken heeft u een webserver en een MySQL database nodig. Als ook zijn er enkele stappen nodig
+nodig om de boilerplate te installeren en te starten met de ontwikkeling. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Stappen:**
 
-## Learning Laravel
+- Nadat u deze repository hebt gekloond en de `.git` directory hebt verwijderd kunt u `composer install` uitvoeren.
+- Stel uw omgeving in, kopieer het `.env.example` naar `.env` en vul de MySQL credentials 
+- Nadat je de installatie van composer hebt uitgevoerd, voer je de volgende `php artisan key:generate` om de unieke applicatie sleutel te creeren
+- Migreer en seed de databank met het `php artisan migrate --seed`
+- Nadat je de volgende stappen hebt uitgevoerd kun je `php artisan serve` uitvoeren voor de local server op te starten.
+- Ga dan naar je browser en je geen fouten ziet heb je de boilerplate successvol geinstalleerd.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Standaard gebruikers in de applicatie 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+De boilerplate komt met enkele standaard gebruikers hier onder vind je de authenticatie gegegevns. 
 
-## Laravel Sponsors
+```
+U: webmaster@domain.tld
+P: password 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+U: administrator@domain.tld
+P: password
+```
 
-### Premium Partners
+## Beveiligingslekken
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+Indien u een beveiligingslek hebt ondekt in de boilerplate, Vragen wij je om een email te sturen naar Tim Joosten via 
+[Topairy@gmail.com](mailto:topairy@gmail.com). Alle beveiligheidslekken zullen met de nodige aandacht worden bekeken en verholpen.
 
-## Contributing
+## Synchronisatie 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+De boilerplate is gesynchroniseerd met Laravel 8.5.6 en Bootstrap 4. <br>
+De laatste synchronisatie is doorgevoerd op 18 december 2020.
 
-## Code of Conduct
+## License 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Scouts boilerplate is volledig open-source en vrijgegeven onder een MIT licentie.

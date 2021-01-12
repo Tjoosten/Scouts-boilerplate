@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\DB;
 
 class CreateUserAction
 {
-    /**
-     * @todo Implement logger on the ->createUser() method
-     * @todo Build and test the notification
-     */
     public function execute(Request $request, UserInformationObject $informationObject): User
     {
         $userInformation = $informationObject->except('role')->toArray();

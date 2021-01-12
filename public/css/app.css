@@ -11011,6 +11011,14 @@ a.text-dark:focus {
   color: #F5821F;
 }
 
+.text-gray-600 {
+  color: #4B5563;
+}
+
+.text-gray-info {
+  color: #6B7280;
+}
+
 .form-search {
   width: 290px !important;
 }
@@ -11057,6 +11065,10 @@ a.text-dark:focus {
 .list-group-transparent .list-group-item.active .icon {
   font-weight: bold;
   color: #572600;
+}
+
+.modal-footer {
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 .jumbotron-welcome {
@@ -11267,6 +11279,24 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.nav-overflow {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.nav-settings {
+  border-bottom: 1px solid #d1ccbc;
+}
+
+.nav-settings .nav-link.active,
+.nav-settings .nav-link:hover {
+  color: #572600;
+  border-bottom: 1px solid;
+  background-color: transparent;
+  border-color: transparent transparent #572600, 15%;
 }
 
 .nav-scroller {
