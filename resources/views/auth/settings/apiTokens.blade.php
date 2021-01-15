@@ -15,7 +15,7 @@
                 <p class="small text-muted">{{ __('API tokens staan toe om applicaties van derden te authenticeren met deze applicatie.') }}</p>
             </div>
             <div class="offset-1 col-8">
-                <x-form method="POST" class="card border-0 shadow-sm" :action="route('home')">
+                <x-form method="POST" class="card border-0 shadow-sm" :action="route('api.tokens.store')">
                     <div class="card-body">
                         <div class="form-group mb-0">
                             <label for="name">{{ __('Service naam') }}</label>
