@@ -10,7 +10,7 @@
     "require": {
         "php": "^8.0",
         "blade-ui-kit/blade-heroicons": "^0.3.1",
-        "cybercog/laravel-ban": "dev-add-php-8-support",
+        "cybercog/laravel-ban": "^4.5.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
