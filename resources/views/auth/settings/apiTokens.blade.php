@@ -54,4 +54,32 @@
             </div>
         </div>
     </div>
+
+    @if (session()->has('token'))
+        <div class="modal fade" id="tokenModal" tabindex="-1" role="dialog" aria-labelledby="tokenModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-modal-header border-0">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('API sleutel aangemaakt') }}</h5>
+                    </div>
+                    <div class="modal-body pt-0">
+                        Hier is je nieuwe api sleutel. Dit is de enige keer dat je hem te zien krijgt.
+                        Indien je de api sleutel niet meer gebruikt kan je hem altijd revoken in je API settings
+                        <hr class="mt-2">
+
+                        <textarea cols="3" class="form-control">{{ session()->get('token') }}</textarea>
+                    </div>
+                    <div class="modal-footer bg-modal-footer border-0">
+                        <button type="button" class="btn btn-primary border-0 shadow-sm" data-dismiss="modal">{{ __('Sluiten') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener('load', function() {
+                $(function() { $('#tokenModal').modal('show') });
+            })
+        </script>
+    @endif
 </x-app-layout>
