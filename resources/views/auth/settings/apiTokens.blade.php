@@ -46,6 +46,12 @@
                     <div class="card-body">
                         @if ($hasTokens)
                             <div class="table-responsive">
+                                @if (session('message'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+
                                 <table class="table table-sm table-hover mb-0">
                                     <thead>
                                     <tr>
@@ -65,7 +71,7 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    <a href="" class="text-decoration-none small text-danger float-right">
+                                                    <a href="{{ route('api.tokens.revoke', $token) }}" class="text-decoration-none small text-danger float-right">
                                                         <x:heroicon-o-trash class="icon"/> revoke
                                                     </a>
                                                 </td>
@@ -76,8 +82,8 @@
                             </div>
                         @else
                             <span class="text-muted font-weight-bold">
-                            <x:heroicon-o-information-circle class="icon mr-1"/> {{ __('Momenteel hebt u nog geen API tokens in :applicatie', ['applicatie' => config('app.name')]) }}
-                        </span>
+                                <x:heroicon-o-information-circle class="icon mr-1"/> {{ __('Momenteel hebt u nog geen API tokens in :applicatie', ['applicatie' => config('app.name')]) }}
+                            </span>
                         @endif
                     </div>
 

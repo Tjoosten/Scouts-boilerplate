@@ -9,6 +9,7 @@ use App\Services\TokenService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Laravel\Sanctum\PersonalAccessToken;
 
 /**
  * API tokens controller
@@ -38,6 +39,17 @@ class TokensController extends Controller
     {
         $accessToken = $request->user()->createToken(AccessTokenDataObject::fromRequest($request)->name);
         session()->flash('token', explode('|', $accessToken->plainTextToken, 2)[1]);
+
+        return redirect()->action([self::class, 'index']);
+    }
+
+    /**
+     * Method for revoking an access token in the application.
+     */
+    public function delete(PersonalAccessToken $personalAccessToken): RedirectResponse
+    {
+        $personalAccessToken->delete();
+        session()->flash('message', __('De API tokens voor de service :service is met success verwijderd?', ['service' => $personalAccessToken->name]));
 
         return redirect()->action([self::class, 'index']);
     }
