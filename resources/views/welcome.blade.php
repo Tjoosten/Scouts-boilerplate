@@ -22,11 +22,12 @@
                         </p>
 
                         <p class="mb-0">
-                            <a href="" class="mr-3">Laravel docs</a>
-                            <a href="" class="mr-3">Laracasts</a>
-                            <a href="" class="mr-3">Forge</a>
-                            <a href="" class="mr-3">Nieuws</a>
-                            <a href="">Github</a>
+                            <a href="https://laravel.com" class="text-decoration-none mr-3">Laravel docs</a>
+                            <a href="https://laracasts.com" class="text-decoration-none mr-3">Laracasts</a>
+                            <a href="https://forge.laravel.com" class="text-decoration-none mr-3">Forge</a>
+                            <a href="https://vapor.laravel.com" class="text-decoration-none mr-3">Vapor</a>
+                            <a href="https://blog.laravel.com" class="text-decoration-none mr-3">Nieuws</a>
+                            <a href="https://github.com/Tjoosten/Scouts-boilerplate" class="text-decoration-none">Github</a>
                         </p>
                     </div>
 
@@ -37,8 +38,9 @@
                                     <div class="media">
                                         <x:heroicon-o-terminal class="icon text-donkergroen icon-lg mr-3"/>
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1 text-donkergroen">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            <h5 class="mt-0 mb-1 text-donkergroen">Development commands & debugging</h5>
+                                            Laravel Telescope en debugbar is standaard geimplementeerd om het debugging van je applicatie te vergemakkelijken.
+                                            Als ook kunt u nieuw controllers, request, etc aanmaken doormiddel van de artisan CLI
                                         </div>
                                     </div>
                                 </div>
@@ -46,21 +48,23 @@
                                     <div class="media">
                                         <x:heroicon-o-book-open class="icon text-donkergroen icon-lg mr-3"/>
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1 text-donkergroen">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            <h5 class="mt-0 mb-1 text-donkergroen">Documentatie</h5>
+                                            De boilerplate is zo goed mogelijk gedocumenteerd in de bijhorende wiki. Die te vinden is in de repository.
+                                            Let wel op de documentatie is echter nog niet volledig op dit moment.
                                         </div>
                                     </div>
                                 </div
                             </div>
                         </li>
                         <li class="list-group-item">
-                            <div class="row">
+                            <div class="row mb-1">
                                 <div class="col-6">
                                     <div class="media">
                                         <x:heroicon-o-chat class="icon text-donkergroen icon-lg mr-3"/>
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1 text-donkergroen">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            <h5 class="mt-0 mb-1 text-donkergroen">Community</h5>
+                                            Hebt u een probleem tijdens het ontwikkelen of wil je laten zien wat je hebt gebouwd met de boilerplate. Dat kan eenvoudig door middel
+                                            van het disccussions tabblad in de github repository.
                                         </div>
                                     </div>
                                 </div>
@@ -68,8 +72,9 @@
                                     <div class="media">
                                         <x:heroicon-o-cube class="icon text-donkergroen icon-lg mr-3"/>
                                         <div class="media-body">
-                                            <h5 class="mt-0 mb-1 text-donkergroen">Media heading</h5>
-                                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                            <h5 class="mt-0 mb-1 text-donkergroen">Laravel framework</h5>
+                                            De scouts boilerplate is gebouwd op basis van het Laravel v{{ Illuminate\Foundation\Application::VERSION }} framework.
+                                            Zodat u snel en gemakkelijk aan de slag kunt met 1 van de meest gebruikte PHP frameworks die er momenteel zijn.
                                         </div>
                                     </div>
                                 </div
