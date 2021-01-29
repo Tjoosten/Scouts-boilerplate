@@ -73,22 +73,6 @@
 }
 
 /// ----------------------------------------------------------
-/// DEMO STYLES - CAN BBE DELETED WHILE DEVELOPING YOUR APP
-/// ----------------------------------------------------------
-
-// Demo welkom pagina. De styles in deze sectie kunnen tijdens de ontwikkeling verwijderd worden.
-// aangezien deze alleen gebruikt worden als standaard vormgeving van de starter boilerplate.
-.jumbotron-welcome {
-    background-color: map-get($sgv-colors, 'vaalgroen');
-
-    > p      { color: map-get($sgv-colors, 'donkergroen'); }
-    > .title { color: map-get($sgv-colors, 'bruin'); }
-
-    .btn-github  { @include button-variant(#333, darken(#333, 10%)); }
-    .btn-laravel { @include button-variant(#f55247, darken(#f55247, 5%)); }
-}
-
-/// ----------------------------------------------------------
 /// PAGE HEADER
 /// ----------------------------------------------------------
 .page-header {
