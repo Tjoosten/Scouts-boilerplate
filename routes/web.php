@@ -35,7 +35,9 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
     // Personal access tokens routes
     if (config('boilerplate.features.api')) {
         Route::group(['prefix' => 'api'], static function (): void {
-            Route::get('tokens', [TokensController::class, 'index'])->name('api.tokens');
+            Route::get('/tokens', [TokensController::class, 'index'])->name('api.tokens');
+            Route::post('/tokens', [TokensController::class, 'store'])->name('api.tokens.store');
+            Route::get('/token/revoke/{personalAccessToken}', [TokensController::class, 'delete'])->name('api.tokens.revoke');
         });
     }
 

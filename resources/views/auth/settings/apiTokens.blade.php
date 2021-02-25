@@ -15,7 +15,7 @@
                 <p class="small text-muted">{{ __('API tokens staan toe om applicaties van derden te authenticeren met deze applicatie.') }}</p>
             </div>
             <div class="offset-1 col-8">
-                <x-form method="POST" class="card border-0 shadow-sm" :action="route('home')">
+                <x-form method="POST" class="card border-0 shadow-sm" :action="route('api.tokens.store')">
                     <div class="card-body">
                         <div class="form-group mb-0">
                             <label for="name">{{ __('Service naam') }}</label>
@@ -42,16 +42,91 @@
                 <p class="small text-muted">{{ __('Je kan tokens die niet meer worden gebruikt makkelijk verwijderen of bekijken.') }}</p>
             </div>
             <div class="offset-1 col-8">
-                <div class="card card-body border-0 shadow-sm">
-                    @if ($hasTokens)
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        @if ($hasTokens)
+                            <div class="table-responsive">
+                                @if (session('message'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
 
-                    @else
-                        <span class="text-muted font-weight-bold">
-                            <x:heroicon-o-information-circle class="icon mr-1"/> {{ __('Momenteel hebt u nog geen API tokens in :applicatie', ['applicatie' => config('app.name')]) }}
-                        </span>
+                                <table class="table table-sm table-hover mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th class="border-top-0 w-50" scope="col">Naam</th>
+                                        <th class="border-top-0" colspan="2" scope="col">Laatst gebruikt</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($tokens as $token)
+                                            <tr>
+                                                <td class="font-weight-bold text-muted">{{ $token->name }}</td>
+                                                <td>
+                                                    @if ($token->last_used_at)
+                                                        {{ $token->last_used_at->diffForHumans() }}
+                                                    @else
+                                                        <span class="text-muted">-</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('api.tokens.revoke', $token) }}" class="text-decoration-none small text-danger float-right">
+                                                        <x:heroicon-o-trash class="icon"/> revoke
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <span class="text-muted font-weight-bold">
+                                <x:heroicon-o-information-circle class="icon mr-1"/> {{ __('Momenteel hebt u nog geen API tokens in :applicatie', ['applicatie' => config('app.name')]) }}
+                            </span>
+                        @endif
+                    </div>
+
+                    @if ($tokens->hasPages())
+                        <div class="card-footer border-top-0">
+                            <div class="row">
+                                <div class="col">{{ $tokens->onEachSide(3)->links() }}</div>
+                                <div class="col text-secondary text-right my-auto">
+                                    {{ $tokens->firstItem() }} tot {{ $tokens->lastItem() }} van {{ $tokens->total() }} API sleutels
+                                </div>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>
         </div>
     </div>
+
+    @if (session()->has('token'))
+        <div class="modal fade" id="tokenModal" tabindex="-1" role="dialog" aria-labelledby="tokenModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-modal-header border-0">
+                        <h5 class="modal-title" id="exampleModalLabel">{{ __('API sleutel aangemaakt') }}</h5>
+                    </div>
+                    <div class="modal-body pt-0">
+                        Hier is je nieuwe api sleutel. Dit is de enige keer dat je hem te zien krijgt.
+                        Indien je de api sleutel niet meer gebruikt kan je hem altijd revoken in je API settings
+                        <hr class="mt-2">
+
+                        <textarea cols="3" class="form-control">{{ session()->get('token') }}</textarea>
+                    </div>
+                    <div class="modal-footer bg-modal-footer border-0">
+                        <button type="button" class="btn btn-primary border-0 shadow-sm" data-dismiss="modal">{{ __('Sluiten') }}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            window.addEventListener('load', function() {
+                $(function() { $('#tokenModal').modal('show') });
+            })
+        </script>
+    @endif
 </x-app-layout>
