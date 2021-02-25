@@ -1,7 +1,7 @@
 <x-app-layout :title="__('Account instellingen')">
     <div class="container">
         <div class="page-header">
-            <h1 class="page-title text-donkergroen">{{ $user->name }}</h1>
+            <h1 class="page-title text-donkergroen">{{ auth()->user()->name }}</h1>
             <div class="page-subtitle">{{ __('Informatie instellingen') }}</div>
         </div>
     </div>
@@ -16,20 +16,20 @@
             </div>
 
             <div class="offset-1 col-8">
-                <x-form method="PATCH" class="card border-0 shadow-sm" :action="route('account.settings.information')">
+                <x-form method="PUT" class="card border-0 shadow-sm" :action="route('user-profile-information.update')">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label">{{ __('Naam')  }}</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $user->name ?? old('name') }}">
-                                <x-error class="invalid-feedback" field="name"/>
+                                <input type="text" class="form-control @error('name', 'updateProfileInformation') is-invalid @enderror" name="name" id="name" value="{{ auth()->user()->name ?? old('name') }}">
+                                <x-error class="invalid-feedback" field="name" bag="updateProfileInformation"/>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label for="email" class="col-sm-4 col-form-label">{{ __('Email adres') }}</label>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email ?? old('email') }}">
-                                <x-error class="invalid-feedback" field="email"/>
+                                <input type="email" class="form-control @error('email', 'updateProfileInformation') is-invalid @enderror" name="email" id="email" value="{{ auth()->user()->email ?? old('email') }}">
+                                <x-error class="invalid-feedback" field="email" bag="updateProfileInformation"/>
                             </div>
                         </div>
                     </div>

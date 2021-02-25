@@ -15,30 +15,15 @@ class SecurityControllerTest extends TestCase
     use WithFaker;
     use RefreshDatabase;
 
+    /** @test */
     public function canDisplaySuccessfullyTheSecuritySettingsView(): void
     {
         $this->assertActionUsesMiddleware(SecurityController::class, 'index', ['auth', 'forbid-banned-user']);
 
         $rick = User::factory()->create();
 
-        $response = $this->actingAs($rick)->patch(route('account.settings.security'));
+        $response = $this->actingAs($rick)->get(route('account.settings.security'));
         $response->assertSuccessful();
         $response->assertViewIs('auth.settings.security');
-    }
-
-    /** @test */
-    public function canSuccessfullyTheAccountSecurity(): void
-    {
-        $this->assertActionUsesFormRequest(SecurityController::class, 'update', SecuritySettingsRequest::class);
-        $this->assertActionUsesMiddleware(SecurityController::class, 'update', ['auth', 'forbid-banned-user']);
-
-        $rick = User::factory()->create(['password' => $password = 'laravel']);
-
-        $response = $this->actingAs($rick)->patch(route('account.settings.security'), [
-            'currentPassword' => $password, 'password' => 'password', 'password_confirmation' => 'password',
-        ]);
-
-        $response->assertRedirect(route('account.settings.security'));
-        $response->assertSessionHas('securityUpdated.success', true);
     }
 }
