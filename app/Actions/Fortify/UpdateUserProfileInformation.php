@@ -39,6 +39,8 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
                 'email' => $input['email'],
             ])->save();
         }
+
+        session()->flash('informationUpdated', true);
     }
 
     /**
