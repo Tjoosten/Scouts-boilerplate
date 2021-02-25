@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Front\Settings;
 
-use App\Actions\Users\UpdateUserAction;
 use App\DataTransferObjects\UserInformationObject;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OtherSessionsRequest;
@@ -30,19 +29,6 @@ class SecurityController extends Controller
             'authSessions' => $userSessionService->getProperties(),
             'canLogoutAuthSessions' => $userSessionService->canLogoutOtherSession(),
         ]);
-    }
-
-    /**
-     * Method for updating the user password information in the application.
-     */
-    public function update(SecuritySettingsRequest $request, UpdateUserAction $updateUserAction): RedirectResponse
-    {
-        $attributes = UserInformationObject::fromRequest($request)->only('password')->toArray();
-        $securityUpdate = $updateUserAction->execute($request->user(), $attributes);
-
-        session()->flash('securityUpdated', ['success' => $securityUpdate]);
-
-        return redirect()->route('account.settings.security');
     }
 
     /**

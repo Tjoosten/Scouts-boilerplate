@@ -18,20 +18,20 @@
             </div>
 
             <div class="offset-1 col-8">
-                <x-form method="PATCH" class="card border-0 shadow-sm" :action="route('account.settings.security')">
+                <x-form method="PUT" class="card border-0 shadow-sm" :action="route('user-password.update')">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="currentPassword" class="col-sm-4 col-form-label">{{ __('Huidig wachtwoord') }}</label>
                             <div class="col-sm-8">
-                                <input type="password" name="currentPassword" class="form-control @error('currentPassword') is-invalid @enderror" id="currentPassword" placeholder="{{ __('huidig wachtwoord') }}">
-                                <x-error class="invalid-feedback" field="currentPassword"/>
+                                <input type="password" name="current_password" class="form-control @error('current_password', 'updatePassword') is-invalid @enderror" id="currentPassword" placeholder="{{ __('huidig wachtwoord') }}">
+                                <x-error class="invalid-feedback" field="current_password" bag="updatePassword"/>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label for="newPassword" class="col-sm-4 col-form-label">{{ __('Nieuw wachtwoord') }}</label>
                             <div class="col-sm-4">
-                                <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="newPassword" placeholder="{{ __('nieuw wachtwoord') }}">
-                                <x-error class="invalid-feedback" field="password"/>
+                                <input type="password" name="password" class="form-control @error('password', 'updatePassword') is-invalid @enderror" id="newPassword" placeholder="{{ __('nieuw wachtwoord') }}">
+                                <x-error class="invalid-feedback" field="password" bag="updatePassword"/>
                             </div>
                             <div class="col-sm-4">
                                 <input type="password" name="password_confirmation" class="form-control" id="newPassword" placeholder="{{ __('wachtwoord confirmatie') }}">
