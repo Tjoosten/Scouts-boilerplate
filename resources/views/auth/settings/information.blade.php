@@ -73,8 +73,13 @@
                         <div class="form-row mb-0">
                             <div class="form-group col-md-8 mb-0">
                                 <label for="password" class="sr-only">{{ __('Het huidige wachtwoord van je account.') }}</label>
-                                <input id="password"  type="password" class="form-control" aria-describedby="passwordHelpBlock" placeholder="{{ __('Uw huidig wachtwoord') }}">
-                                <small id="passwordHelpBlock" class="text-muted form-text">{{ __('Het huidige wachtwoord van je account.') }}</small>
+                                <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" aria-describedby="passwordHelpBlock" placeholder="{{ __('Uw huidig wachtwoord') }}">
+
+                                @if ($errors->has('password'))
+                                    <x-error class="invalid-feedback" field="password"/>
+                                @else
+                                    <small id="passwordHelpBlock" class="text-muted form-text">{{ __('Het huidige wachtwoord van je account.') }}</small>
+                                @endif
                             </div>
                         </div>
                     </div>
