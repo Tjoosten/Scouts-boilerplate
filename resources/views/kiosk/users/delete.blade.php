@@ -35,6 +35,10 @@
                         <a href="{{ route('kiosk.users.index') }}" class="btn btn-light border-0">
                             {{ __('Annuleren') }}
                         </a>
+
+                        <button type="submit" class="btn btn-danger border-0 shadow-sm">
+                            <x-heroicon-o-trash class="icon mr-1"/> Account verwijderen
+                        </button>
                     </div>
                 </x-form>
             </div>

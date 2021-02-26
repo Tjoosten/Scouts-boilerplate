@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', WelcomeController::class)->name('welcome');
 
 Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function () {
-    Route::match(['GET', 'DELETE'], '/Account-verwijderen', DeleteController::class)->name('account.delete');
+    Route::get('/Account-verwijderen', DeleteController::class)->name('account.delete');
 
     Route::group(['prefix' => 'account-instellngen'], static function (): void {
         Route::view('/informatie', 'auth.settings.information')->name('account.settings.information');
