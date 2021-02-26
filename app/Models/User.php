@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
 use Laravel\Sanctum\HasApiTokens;
+use Mpociot\Teamwork\Traits\UserHasTeams;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -30,6 +31,7 @@ class User extends Authenticatable implements BannableContract
     use Bannable;
     use CausesActivity;
     use HasApiTokens;
+    use UserHasTeams;
 
     /**
      * The attributes that are mass assignable.

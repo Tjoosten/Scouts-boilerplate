@@ -61,21 +61,53 @@
                             </li>
                         @endif
                     @else
+                        @if (Auth::user()->canAccessKiosk())
+                            <li class="nav-item">
+                                <a href="{{ route('kiosk.dashboard') }}" class="nav-link">
+                                    <x-heroicon-o-adjustments class="icon mr-1"/> {{ __('Kiosk') }}
+                                </a>
+                            </li>
+                        @endif
+
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <x-heroicon-o-user class="icon mr-1"/> {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu border-0 shadow-sm dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <h6 class="dropdown-header">{{ __('Account instellingen') }}</h6>
+
+                                <a href="{{ route('account.settings.information') }}" class="dropdown-item">
+                                    {{ __('Instellingen') }}
+                                </a>
+
+                                <a href="" class="dropdown-item">
+                                    {{ __('API tokens') }}
+                                </a>
+
+                                <div class="dropdown-divider"></div>
+
+                                @if (config('boilerplate.features.teams'))
+                                    <h6 class="dropdown-header">{{ __('Ploegen') }}</h6>
+
+                                    <a href="" class="dropdown-item">
+                                        {{ __('Instellingen') }}
+                                    </a>
+
+                                    <a href="" class="dropdown-item">
+                                        {{ __('Overzicht') }}
+                                    </a>
+
+                                    <a href="" class="dropdown-item">
+                                        {{ __('Nieuwe ploeg') }}
+                                    </a>
+                                @endif
+
                                 @if (Auth::user()->canAccessKiosk())
                                     <a href="{{ route('kiosk.dashboard') }}" class="dropdown-item">
                                         <x-heroicon-o-home class="icon mr-1 color-bruin"/> {{ __('Kiosk') }}
                                     </a>
                                 @endif
-
-                                <a href="{{ route('account.settings.information') }}" class="dropdown-item">
-                                    <x-heroicon-o-adjustments class="color-bruin icon mr-1"/> {{ __('Instellingen') }}
-                                </a>
 
                                 <div class="dropdown-divider"></div>
 

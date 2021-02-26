@@ -44,6 +44,12 @@
                                     <x-heroicon-o-globe class="icon text-bruin mr-1"/> {{ __('Website') }}
                                 </a>
 
+                                @if (config('boilerplate.features.teams'))
+                                    <a href="" class="dropdown-item">
+                                        <x-heroicon-o-users class="color-bruin mr-1 icon"/> {{ __('Teams') }}
+                                    </a>
+                                @endif
+
                                 <a class="dropdown-item" href="{{ route('account.settings.information') }}">
                                     <x-heroicon-o-adjustments class="color-bruin icon mr-1"/> {{ __('Instellingen') }}
                                 </a>
