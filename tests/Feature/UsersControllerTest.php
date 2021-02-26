@@ -148,6 +148,20 @@ class UsersControllerTest extends TestCase
     }
 
     /** @test */
+    public function administratorOfWebmasterCVanViewTheDeletionConfirmationView(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+        $this->assertActionUsesMiddleware(UsersController::class, 'destroy', ['auth', 'kiosk']);
+
+        $willem = User::whereEmail('webmaster@domain.tld')->firstOrFail();
+        $lena   = User::whereEmail('administrator@domain.tld')->firstOrFail();
+
+        $response = $this->actingAs($lena)->get(route('kiosk.users.delete', $willem))
+            ->assertSuccessful()
+            ->assertViewIs('kiosk.users.delete');
+    }
+
+    /** @test */
     public function userCanByDeletedByAnAdministatorOrWebmaster(): void
     {
         $this->seed(DatabaseSeeder::class);
@@ -157,7 +171,7 @@ class UsersControllerTest extends TestCase
         $lena   = User::whereEmail('administrator@domain.tld')->firstOrFail();
 
         $this->actingAs($willem)
-            ->get(route('kiosk.users.delete', $willem))
+            ->delete(route('kiosk.users.delete', $willem))
             ->assertRedirect(route('kiosk.users.index'))
             ->assertSessionHas([
                 'laravel_flash_message.message' => __('De login van :user is verwijderd in :applicatie', [
