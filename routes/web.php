@@ -1,9 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\DashboardController;
-use App\Http\Controllers\Front\AccountController;
 use App\Http\Controllers\Front\Settings\DeleteController;
-use App\Http\Controllers\Front\Settings\InformationController;
 use App\Http\Controllers\Front\Settings\SecurityController;
 use App\Http\Controllers\Front\Settings\TokensController;
 use App\Http\Controllers\Front\WelcomeController;
@@ -24,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', WelcomeController::class)->name('welcome');
 
 Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function () {
-    Route::delete('/Account-verwijderen', DeleteController::class)->name('account.delete');
+    Route::get('/Account-verwijderen', DeleteController::class)->name('account.delete');
 
     Route::group(['prefix' => 'account-instellngen'], static function (): void {
         Route::view('/informatie', 'auth.settings.information')->name('account.settings.information');

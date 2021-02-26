@@ -62,13 +62,29 @@
             <div class="offset-1 col-8">
                 <x-form class="card shadow-sm border-0" method="DELETE" :action="route('account.delete')">
                     <div class="card-body">
-                        <p class="card-text pb-2">
+                        <p class="card-text">
                             {{ __('Bij het verwijderen van je account. Zal al je data permanent verwijderd worden.') }}
                             {{ __('Als ook zal de verwijdering niet ongedaan gemaakt kunnen worden, vandaar') }}
                             {{ __('dat je we willen vragen om zeker te zijn over het verwijderen van je account.') }}
                         </p>
 
-                        <button type="submit" class="btn btn-danger border-0">
+                        <hr>
+
+                        <div class="form-row mb-0">
+                            <div class="form-group col-md-8 mb-0">
+                                <label for="password" class="sr-only">{{ __('Het huidige wachtwoord van je account.') }}</label>
+                                <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" aria-describedby="passwordHelpBlock" placeholder="{{ __('Uw huidig wachtwoord') }}">
+
+                                @if ($errors->has('password'))
+                                    <x-error class="invalid-feedback" field="password"/>
+                                @else
+                                    <small id="passwordHelpBlock" class="text-muted form-text">{{ __('Het huidige wachtwoord van je account.') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-top-0">
+                        <button type="submit" class="btn btn-danger border-0 shadow-sm">
                             <x-heroicon-o-trash class="icon"/> {{ __('Account verwijderen') }}
                         </button>
                     </div>
