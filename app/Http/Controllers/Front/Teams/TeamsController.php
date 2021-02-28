@@ -1,0 +1,32 @@
+<?php declare(strict_types=1);
+
+namespace App\Http\Controllers\Front\Teams;
+
+use App\Http\Controllers\Controller;
+use App\Models\Team;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\Request;
+
+/**
+ * Class TeamsController
+ *
+ * @todo Write unit tests
+ * @package App\Http\Controllers
+ */
+final class TeamsController extends Controller
+{
+    /**
+     * Method for displaying the current active team for the user.
+     *
+     * @param  Request  $request
+     * @param  Team     $team
+     * @return Renderable
+     */
+    public function show(Request $request, Team $team): Renderable
+    {
+        $teams = $request->user()->teams()->get(['id', 'name']);
+        $members = $team->users()->paginate();
+
+        return view('teams.show', compact('team', 'teams', 'members'));
+    }
+}

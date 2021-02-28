@@ -5,6 +5,7 @@ use App\Http\Controllers\Front\Settings\DeleteController;
 use App\Http\Controllers\Front\Settings\SecurityController;
 use App\Http\Controllers\Front\Settings\TokensController;
 use App\Http\Controllers\Front\WelcomeController;
+use App\Http\Controllers\Front\Teams\TeamsController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,13 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
             Route::get('/tokens', [TokensController::class, 'index'])->name('api.tokens');
             Route::post('/tokens', [TokensController::class, 'store'])->name('api.tokens.store');
             Route::get('/token/revoke/{personalAccessToken}', [TokensController::class, 'delete'])->name('api.tokens.revoke');
+        });
+    }
+
+    // User team routes
+    if (config('boilerplate.features.teams')) {
+        Route::group(['prefix' => 'teams'], static function (): void {
+            Route::get('/{team}', [TeamsController::class, 'show'])->name('teams.show');
         });
     }
 

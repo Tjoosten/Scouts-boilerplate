@@ -78,11 +78,11 @@
                                 <h6 class="dropdown-header">{{ __('Account instellingen') }}</h6>
 
                                 <a href="{{ route('account.settings.information') }}" class="dropdown-item">
-                                    {{ __('Instellingen') }}
+                                    <x-heroicon-o-adjustments class="mr-1 icon text-bruin"/> {{ __('Instellingen') }}
                                 </a>
 
                                 <a href="" class="dropdown-item">
-                                    {{ __('API tokens') }}
+                                    <x-heroicon-o-key class="mr-1 icon text-bruin"/> {{ __('API tokens') }}
                                 </a>
 
                                 <div class="dropdown-divider"></div>
@@ -90,16 +90,16 @@
                                 @if (config('boilerplate.features.teams'))
                                     <h6 class="dropdown-header">{{ __('Ploegen') }}</h6>
 
-                                    <a href="" class="dropdown-item">
-                                        {{ __('Instellingen') }}
+                                    <a href="{{ route('teams.show', auth()->user()->currentTeam) }}" class="dropdown-item">
+                                        <x-heroicon-o-information-circle class="mr-1 icon text-bruin"/> {{ __('Huidige ploeg') }}
                                     </a>
 
                                     <a href="" class="dropdown-item">
-                                        {{ __('Overzicht') }}
+                                        <x-heroicon-o-menu class="mr-1 icon text-bruin"/> {{ __('Ploegen') }}
                                     </a>
 
                                     <a href="" class="dropdown-item">
-                                        {{ __('Nieuwe ploeg') }}
+                                        <x-heroicon-o-plus class="mr-1 icon text-bruin"/> {{ __('Nieuwe ploeg') }}
                                     </a>
                                 @endif
 

@@ -33,6 +33,16 @@
     color: #EF4444;
 }
 
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #f1f5f8;
+    pointer-events: none;
+    opacity: 1;
+    color: #606F7B;
+    border: 0 !important;
+    outline: none;
+}
+
 
 .list-group-transparent .list-group-item {
     border-left: 5px solid transparent;
