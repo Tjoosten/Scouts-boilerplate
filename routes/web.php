@@ -4,6 +4,7 @@ use App\Http\Controllers\Front\DashboardController;
 use App\Http\Controllers\Front\Settings\DeleteController;
 use App\Http\Controllers\Front\Settings\SecurityController;
 use App\Http\Controllers\Front\Settings\TokensController;
+use App\Http\Controllers\Front\Teams\MembersController;
 use App\Http\Controllers\Front\WelcomeController;
 use App\Http\Controllers\Front\Teams\TeamsController;
 use Illuminate\Support\Facades\Auth;
@@ -44,6 +45,12 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
     if (config('boilerplate.features.teams')) {
         Route::group(['prefix' => 'teams'], static function (): void {
             Route::get('/{team}', [TeamsController::class, 'show'])->name('teams.show');
+
+            // Team member routes
+            Route::group(['middleware' => 'teamowner'], static function (): void {
+                Route::get('/{team}/members', [MembersController::class, 'index'])->name('teams.members.index');
+                Route::post('/{team}/members', [MembersController::class, 'store'])->name('teams.members.store');
+            });
         });
     }
 

@@ -18,15 +18,14 @@ final class TeamsController extends Controller
     /**
      * Method for displaying the current active team for the user.
      *
-     * @param  Request  $request
-     * @param  Team     $team
+     * @param  Request  $request The request instance that contains all the request information.
+     * @param  Team     $team    The resource entity for the current active team.
      * @return Renderable
      */
     public function show(Request $request, Team $team): Renderable
     {
         $teams = $request->user()->teams()->get(['id', 'name']);
-        $members = $team->users()->paginate();
 
-        return view('teams.show', compact('team', 'teams', 'members'));
+        return view('teams.show', compact('team', 'teams'));
     }
 }

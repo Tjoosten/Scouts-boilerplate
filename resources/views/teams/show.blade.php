@@ -26,23 +26,7 @@
     <div class="container pt-3">
         <div class="row">
             <div class="col-12 pb-4">
-                <ul class="nav-settings nav-overflow nav">
-                    <li class="nav-item">
-                        <a class="nav-link {{ active('teams.show') }}" href="{{ route('teams.show', $team) }}">
-                            <x-heroicon-o-information-circle class="icon mr-1"/> {{ __('Informatie') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <x-heroicon-o-users class="icon mr-1"/> {{ __('Leden') }}
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <x-heroicon-o-plus class="icon mr-1"/> {{ __('Leden uitnodigen') }}
-                        </a>
-                    </li>
-                </ul>
+                @include ('teams._navigation', ['team' => $team])
             </div>
 
             <div class="col-3">
