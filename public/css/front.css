@@ -1,0 +1,26 @@
+.footer {
+  background: #bdd732;
+  background: linear-gradient(90deg, #bdd732 0%, #dbe68e 100%);
+  background-color: #BDD732;
+}
+.footer p {
+  color: #572600;
+  font-size: 0.85rem;
+}
+.footer p > a {
+  color: #748D26;
+  font-weight: bold;
+  text-decoration: none;
+}
+.footer .list-inline-item {
+  margin-right: 15px;
+}
+.footer .list-inline-item > a {
+  color: #748D26;
+  font-weight: bold;
+  text-decoration: none;
+}
+.footer .list-inline-item > a:hover {
+  color: #572600;
+  text-decoration: underline;
+}

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-100">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/front.css') }}" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column h-100">
 <div id="app">
     <x-app-flash-message/>
 
@@ -94,9 +95,23 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main class="py-4 flex-shrink-0">
         {{ $slot }}
     </main>
 </div>
+<footer class="footer mt-auto py-5">
+    <div class="container">
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="https://github.com/Zakmes/Frode">{{ __('Github') }}</a></li>
+            <li class="list-inline-item"><a href="https://github.com/Zakmes/Frode/discussions">{{ __('Discussion') }}</a></li>
+            <li class="list-inline-item"><a href="">{{ __('Documentation') }}</a></li>
+            <li class="list-inline-item"><a href="">{{ __('Privacy policy') }}</a></li>
+            <li class="list-inline-item"><a href="">{{ __('Terms of service') }}</a></li>
+        </ul>
+
+        <p class="mb-0">{{ __('Designed and built with all the love in the world by the Bootstrap team with the help of our contributors.') }}</p>
+        <p class="mb-0">{{ __('Currently v5.0.0-beta3. Code licensed MIT.') }}</p>
+    </div>
+</footer>
 </body>
 </html>

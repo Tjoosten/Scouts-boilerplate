@@ -1,0 +1,33 @@
+@import "variables";
+
+.footer {
+    background: rgb(189,215,50);
+    background: linear-gradient(90deg, rgba(189,215,50,1) 0%, rgba(219,230,142,1) 100%);
+    background-color: map-get($sgv-colors, 'lichtgroen');
+
+    p {
+        color: map-get($sgv-colors, 'bruin');
+        font-size: 0.85rem;
+
+        > a {
+            color: map-get($sgv-colors, 'donkergroen');
+            font-weight: bold;
+            text-decoration: none;
+        }
+    }
+
+    .list-inline-item {
+        margin-right: 15px;
+
+        > a{
+            color: map-get($sgv-colors, 'donkergroen');
+            font-weight: bold;
+            text-decoration: none;
+
+            &:hover {
+                color: map-get($sgv-colors, 'bruin');
+                text-decoration: underline;
+            }
+        }
+    }
+}

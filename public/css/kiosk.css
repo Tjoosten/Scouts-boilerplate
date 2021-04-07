@@ -1,0 +1,21 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background-color: transparent;
+}
+
+.copyright {
+  color: #ced4da;
+}
+
+body {
+  margin-bottom: 60px;
+}
