@@ -109,8 +109,8 @@
             <li class="list-inline-item"><a href="">{{ __('Terms of service') }}</a></li>
         </ul>
 
-        <p class="mb-0">{{ __('Designed and built with all the love in the world by the Bootstrap team with the help of our contributors.') }}</p>
-        <p class="mb-0">{{ __('Currently v5.0.0-beta3. Code licensed MIT.') }}</p>
+        <p class="mb-0">{{ __('Ontworpen en gebouwd met alle liefde in de wereld door TIm Joosten en de contributors van het project.') }}</p>
+        <p class="mb-0">{{ __('Huidige versie 0.0.1. Code gelicentieerd onder MIT.') }}</p>
     </div>
 </footer>
 </body>
