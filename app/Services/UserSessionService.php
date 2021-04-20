@@ -54,7 +54,7 @@ class UserSessionService
      */
     private function getUserSessions(): Collection
     {
-        return DB::table($this->sessionDatabaseTable())
+        return DB::connection(config('session.connection'))->table($this->sessionDatabaseTable())
             ->where('user_id', Auth::user()->getAuthIdentifier())
             ->orderBy('last_activity', 'desc')
             ->get();
@@ -100,7 +100,7 @@ class UserSessionService
      */
     public function otherSessions(): Builder
     {
-        return DB::table($this->sessionDatabaseTable())
+        return DB::connection(config('session.connection'))->table($this->sessionDatabaseTable())
             ->where('user_id', Auth::user()->getAuthIdentifier())
             ->where('id', '!=', request()->session()->getId());
     }
@@ -110,6 +110,8 @@ class UserSessionService
      *
      * @param  string $password The password that the user has filled in.
      * @return void
+     *
+     * @throws \Illuminate\Auth\AuthenticationException
      */
     public function logoutOtherBrowserSessions(string $password): void
     {
@@ -118,6 +120,7 @@ class UserSessionService
         }
 
         auth()->logoutOtherDevices($password);
+
         $this->otherSessions()->delete();
     }
 }
