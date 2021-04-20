@@ -14,6 +14,7 @@ use App\Services\RoleService;
 use App\Services\UserService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 
 /**
  * Class UsersController
@@ -86,13 +87,20 @@ class UsersController extends Controller
         return redirect()->route('kiosk.users.show', $userEntity);
     }
 
-    public function destroy(User $user, DeleteUserAction $deleteUserAction): RedirectResponse
+    public function destroy(Request $request, User $user, DeleteUserAction $deleteUserAction): Renderable|RedirectResponse
     {
         $this->authorize('delete', $user);
-        $deleteUserAction->execute($user);
 
-        $languageKeys = ['user' => $user->name, 'application' => config('app.name')];
-        flash(__('De login van :user is verwijderd in :application', $languageKeys), 'alert-success');
+        if ($request->isMethod('GET')) {
+            return view('kiosk.users.delete', ['user' => $user]);
+        }
+
+       if ($request->isMethod('DELETE')) {
+           $deleteUserAction->execute($user);
+
+           $languageKeys = ['user' => $user->name, 'application' => config('app.name')];
+           flash(__('De login van :user is verwijderd in :application', $languageKeys), 'alert-success');
+       }
 
         return redirect()->route('kiosk.users.index');
     }

@@ -1,7 +1,11 @@
 <x-app-layout :title="__('Account instellingen')">
     <div class="container">
         <div class="page-header">
+<<<<<<< HEAD:resources/views/auth/settings/information.blade.php
             <h1 class="page-title text-donkergroen">{{ $user->name }}</h1>
+=======
+            <h1 class="page-title text-donkergroen">{{ auth()->user()->name }}</h1>
+>>>>>>> develop:resources/views/auth/settings.blade.php
             <div class="page-subtitle">{{ __('Informatie instellingen') }}</div>
         </div>
     </div>
@@ -16,20 +20,20 @@
             </div>
 
             <div class="offset-1 col-8">
-                <x-form method="PATCH" class="card border-0 shadow-sm" :action="route('account.settings.information')">
+                <x-form method="PUT" class="card border-0 shadow-sm" :action="route('user-profile-information.update')">
                     <div class="card-body">
                         <div class="form-group row">
                             <label for="name" class="col-sm-4 col-form-label">{{ __('Naam')  }}</label>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $user->name ?? old('name') }}">
-                                <x-error class="invalid-feedback" field="name"/>
+                                <input type="text" class="form-control @error('name', 'updateProfileInformation') is-invalid @enderror" name="name" id="name" value="{{ auth()->user()->name ?? old('name') }}">
+                                <x-error class="invalid-feedback" field="name" bag="updateProfileInformation"/>
                             </div>
                         </div>
                         <div class="form-group row mb-0">
                             <label for="email" class="col-sm-4 col-form-label">{{ __('Email adres') }}</label>
                             <div class="col-sm-8">
-                                <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email ?? old('email') }}">
-                                <x-error class="invalid-feedback" field="email"/>
+                                <input type="email" class="form-control @error('email', 'updateProfileInformation') is-invalid @enderror" name="email" id="email" value="{{ auth()->user()->email ?? old('email') }}">
+                                <x-error class="invalid-feedback" field="email" bag="updateProfileInformation"/>
                             </div>
                         </div>
                     </div>
@@ -62,13 +66,29 @@
             <div class="offset-1 col-8">
                 <x-form class="card shadow-sm border-0" method="DELETE" :action="route('account.delete')">
                     <div class="card-body">
-                        <p class="card-text pb-2">
+                        <p class="card-text">
                             {{ __('Bij het verwijderen van je account. Zal al je data permanent verwijderd worden.') }}
                             {{ __('Als ook zal de verwijdering niet ongedaan gemaakt kunnen worden, vandaar') }}
                             {{ __('dat je we willen vragen om zeker te zijn over het verwijderen van je account.') }}
                         </p>
 
-                        <button type="submit" class="btn btn-danger border-0">
+                        <hr>
+
+                        <div class="form-row mb-0">
+                            <div class="form-group col-md-8 mb-0">
+                                <label for="password" class="sr-only">{{ __('Het huidige wachtwoord van je account.') }}</label>
+                                <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" aria-describedby="passwordHelpBlock" placeholder="{{ __('Uw huidig wachtwoord') }}">
+
+                                @if ($errors->has('password'))
+                                    <x-error class="invalid-feedback" field="password"/>
+                                @else
+                                    <small id="passwordHelpBlock" class="text-muted form-text">{{ __('Het huidige wachtwoord van je account.') }}</small>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer border-top-0">
+                        <button type="submit" class="btn btn-danger border-0 shadow-sm">
                             <x-heroicon-o-trash class="icon"/> {{ __('Account verwijderen') }}
                         </button>
                     </div>

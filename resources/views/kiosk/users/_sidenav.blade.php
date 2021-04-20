@@ -21,7 +21,7 @@
         </a>
     @endcan
 
-    <a href="{{ route('kiosk.users.delete', $user) }}" class="list-group-item list-group-item-action">
+    <a href="{{ route('kiosk.users.delete', $user) }}" class="{{ active('kiosk.users.delete') }} list-group-item list-group-item-action">
         <x-heroicon-o-trash class="icon mr-2 text-danger"/> {{ __('Verwijder gebruiker') }}
     </a>
 </div>

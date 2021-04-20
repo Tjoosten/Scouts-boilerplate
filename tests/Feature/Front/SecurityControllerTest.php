@@ -15,12 +15,17 @@ class SecurityControllerTest extends TestCase
     use WithFaker;
     use RefreshDatabase;
 
+<<<<<<< HEAD
+=======
+    /** @test */
+>>>>>>> develop
     public function canDisplaySuccessfullyTheSecuritySettingsView(): void
     {
         $this->assertActionUsesMiddleware(SecurityController::class, 'index', ['auth', 'forbid-banned-user']);
 
         $rick = User::factory()->create();
 
+<<<<<<< HEAD
         $response = $this->actingAs($rick)->patch(route('account.settings.security'));
         $response->assertSuccessful();
         $response->assertViewIs('auth.settings.security');
@@ -41,4 +46,10 @@ class SecurityControllerTest extends TestCase
         $response->assertRedirect(route('account.settings.security'));
         $response->assertSessionHas('securityUpdated.success', true);
     }
+=======
+        $response = $this->actingAs($rick)->get(route('account.settings.security'));
+        $response->assertSuccessful();
+        $response->assertViewIs('auth.settings.security');
+    }
+>>>>>>> develop
 }

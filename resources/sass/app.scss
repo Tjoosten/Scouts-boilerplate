@@ -70,6 +70,7 @@
 
 .modal-footer {
     background-color: rgba(0, 0, 0, 0.03);
+<<<<<<< HEAD
 }
 
 /// ----------------------------------------------------------
@@ -86,6 +87,8 @@
 
     .btn-github  { @include button-variant(#333, darken(#333, 10%)); }
     .btn-laravel { @include button-variant(#f55247, darken(#f55247, 5%)); }
+=======
+>>>>>>> develop
 }
 
 /// ----------------------------------------------------------

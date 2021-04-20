@@ -7,7 +7,6 @@ use App\DataTransferObjects\UserInformationObject;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OtherSessionsRequest;
 use App\Http\Requests\Profile\SecuritySettingsRequest;
-use App\Services\UserService;
 use App\Services\UserSessionService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
