@@ -1,7 +1,7 @@
 <?php
 
-use App\Domain\Auth\Http\Controllers\DeleteController;
-use App\Domain\Auth\Http\Controllers\SecurityController;
+use App\Http\Controllers\Front\Settings\DeleteController;
+use App\Http\Controllers\Front\Settings\SecurityController;
 use App\Http\Controllers\Front\DashboardController;
 use App\Http\Controllers\Front\Settings\InformationController;
 use App\Http\Controllers\Front\Settings\TokensController;
