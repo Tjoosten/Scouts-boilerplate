@@ -23,8 +23,9 @@ Route::get('/', WelcomeController::class)->name('welcome');
 
 Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function () {
     Route::group(['prefix' => 'account-instellngen'], static function (): void {
-        Route::get('/informatie', [InformationController::class, 'index'])->name('account.settings.information');
-        Route::patch('/informatie', [InformationController::class, 'update'])->name('account.settings.information');
+        Route::view('/informatie', 'auth.settings.information')->name('account.settings.information');
+        Route::patch('/informatie', InformationController::class)->name('account.settings.information');
+
         Route::get('/security', [SecurityController::class, 'index'])->name('account.settings.security');
         Route::patch('/security', [SecurityController::class, 'update'])->name('account.settings.security');
     });
