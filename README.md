@@ -36,8 +36,8 @@ Indien u een beveiligingslek hebt ondekt in de boilerplate, Vragen wij je om een
 
 ## Synchronisatie 
 
-De boilerplate is gesynchroniseerd met Laravel 8.5.11 en Bootstrap 4. <br>
-De laatste synchronisatie is doorgevoerd op 26 Februari 2021.
+De boilerplate is gesynchroniseerd met Laravel 8.5.20 en Bootstrap 4. <br>
+De laatste synchronisatie is doorgevoerd op 18 Juni 2021.
 
 ## License 
 
