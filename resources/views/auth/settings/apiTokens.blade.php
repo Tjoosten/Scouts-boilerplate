@@ -15,11 +15,7 @@
                 <p class="small text-muted">{{ __('API tokens staan toe om applicaties van derden te authenticeren met deze applicatie.') }}</p>
             </div>
             <div class="offset-1 col-8">
-<<<<<<< HEAD
-                <x-form method="POST" class="card border-0 shadow-sm" :action="route('home')">
-=======
                 <x-form method="POST" class="card border-0 shadow-sm" :action="route('api.tokens.store')">
->>>>>>> develop
                     <div class="card-body">
                         <div class="form-group mb-0">
                             <label for="name">{{ __('Service naam') }}</label>
@@ -46,15 +42,6 @@
                 <p class="small text-muted">{{ __('Je kan tokens die niet meer worden gebruikt makkelijk verwijderen of bekijken.') }}</p>
             </div>
             <div class="offset-1 col-8">
-<<<<<<< HEAD
-                <div class="card card-body border-0 shadow-sm">
-                    @if ($hasTokens)
-
-                    @else
-                        <span class="text-muted font-weight-bold">
-                            <x:heroicon-o-information-circle class="icon mr-1"/> {{ __('Momenteel hebt u nog geen API tokens in :applicatie', ['applicatie' => config('app.name')]) }}
-                        </span>
-=======
                 <div class="card border-0 shadow-sm">
                     <div class="card-body">
                         @if ($hasTokens)
@@ -109,14 +96,11 @@
                                 </div>
                             </div>
                         </div>
->>>>>>> develop
                     @endif
                 </div>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
 
     @if (session()->has('token'))
         <div class="modal fade" id="tokenModal" tabindex="-1" role="dialog" aria-labelledby="tokenModalLabel" aria-hidden="true">
@@ -145,5 +129,4 @@
             })
         </script>
     @endif
->>>>>>> develop
 </x-app-layout>

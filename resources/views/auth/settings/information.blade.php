@@ -1,11 +1,7 @@
 <x-app-layout :title="__('Account instellingen')">
     <div class="container">
         <div class="page-header">
-<<<<<<< HEAD:resources/views/auth/settings/information.blade.php
-            <h1 class="page-title text-donkergroen">{{ $user->name }}</h1>
-=======
             <h1 class="page-title text-donkergroen">{{ auth()->user()->name }}</h1>
->>>>>>> develop:resources/views/auth/settings.blade.php
             <div class="page-subtitle">{{ __('Informatie instellingen') }}</div>
         </div>
     </div>
