@@ -13,8 +13,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "jenssegers/agent": "^2.6",
         "laravel/fortify": "^1.7",
-        "laravel/framework": "^8.40",
-        "laravel/sanctum": "^2.8",
+        "laravel/framework": "^8.54",
+        "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "spatie/data-transfer-object": "^2.6",
         "spatie/laravel-activitylog": "^3.16",
@@ -26,7 +26,6 @@
         "barryvdh/laravel-debugbar": "^3.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
         "jasonmccreary/laravel-test-assertions": "^1.0",
         "laravel/telescope": "^4.3",
         "mockery/mockery": "^1.4.2",
@@ -54,6 +53,9 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
