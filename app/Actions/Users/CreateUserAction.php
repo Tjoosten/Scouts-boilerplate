@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Users;
 
 use App\DataTransferObjects\UserInformationObject;
@@ -9,7 +11,7 @@ use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class CreateUserAction
+final class CreateUserAction
 {
     public function execute(Request $request, UserInformationObject $informationObject): User
     {
