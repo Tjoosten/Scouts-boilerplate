@@ -7,11 +7,6 @@ use App\Notifications\Users\AccountDeactivatedNotification;
 use Illuminate\Support\Facades\DB;
 use Spatie\DataTransferObject\DataTransferObject;
 
-/**
- * Class DeactivateAction
- *
- * @package App\Actions\Users
- */
 class DeactivateAction
 {
     public function execute(User $user, DataTransferObject $dataTransferObject): void

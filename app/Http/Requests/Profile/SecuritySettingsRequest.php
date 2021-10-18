@@ -4,19 +4,13 @@ namespace App\Http\Requests\Profile;
 
 use App\Rules\MatchUserPassword;
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
+use JetBrains\PhpStorm\Pure;
 
-/**
- * Class SecuritySettingsRequest
- *
- * @package App\Http\Requests\Profile
- */
 class SecuritySettingsRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    #[Pure]
+    #[ArrayShape(['currentPassword' => "array", 'password' => "string[]"])]
     public function rules(): array
     {
         return [

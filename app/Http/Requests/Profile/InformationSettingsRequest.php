@@ -3,20 +3,11 @@
 namespace App\Http\Requests\Profile;
 
 use Illuminate\Foundation\Http\FormRequest;
+use JetBrains\PhpStorm\ArrayShape;
 
-
-/**
- * Class InformationSettingsRequest
- *
- * @package App\Http\Requests\Profile
- */
 class InformationSettingsRequest extends FormRequest
 {
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    #[ArrayShape(['name' => "string[]", 'email' => "string[]"])]
     public function rules(): array
     {
         return [
