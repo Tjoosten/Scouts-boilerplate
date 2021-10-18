@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Users;
 
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-class ActivateAction
+final class ActivateAction
 {
     public function execute(User $user): void
     {

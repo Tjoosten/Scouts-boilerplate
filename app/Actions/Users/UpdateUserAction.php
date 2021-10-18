@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Users;
 
 use App\Models\User;
@@ -7,7 +9,7 @@ use App\Services\UserService;
 use Illuminate\Support\Facades\DB;
 use JetBrains\PhpStorm\Pure;
 
-class UpdateUserAction
+final class UpdateUserAction
 {
     public function execute(User $user, array $attributes): bool
     {
