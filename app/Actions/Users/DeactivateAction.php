@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Actions\Users;
 
 use App\Models\User;
@@ -7,12 +9,7 @@ use App\Notifications\Users\AccountDeactivatedNotification;
 use Illuminate\Support\Facades\DB;
 use Spatie\DataTransferObject\DataTransferObject;
 
-/**
- * Class DeactivateAction
- *
- * @package App\Actions\Users
- */
-class DeactivateAction
+final class DeactivateAction
 {
     public function execute(User $user, DataTransferObject $dataTransferObject): void
     {
