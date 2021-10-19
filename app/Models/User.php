@@ -6,6 +6,8 @@ use App\Models\Traits\ActivityLogging;
 use App\Models\Traits\KioskMethods;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
@@ -31,51 +33,22 @@ class User extends Authenticatable implements BannableContract
     use CausesActivity;
     use HasApiTokens;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
     protected $fillable = ['name', 'email', 'password'];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array
-     */
     protected $hidden = ['password', 'remember_token'];
-
-    /**
-     * The attributes that should be cast..
-     *
-     * @var array
-     */
     protected $casts = ['email_verified_at' => 'datetime'];
 
-    /**
-     * Method for hashing the user password in the database storage.
-     *
-     * @param  string $password The given password from the user login.
-     * @return void
-     */
     public function setPasswordAttribute(string $password): void
     {
         $this->attributes['password'] = Hash::make($password);
     }
 
-    /**
-     * Method for uppercase the first character of the username.
-     *
-     * @param  string $name The username from the user account.
-     * @return string
-     */
     public function getNameAttribute(string $name): string
     {
         return ucwords($name);
     }
 
 
-    public function banInformation()
+    public function banInformation(): Model|MorphMany|null
     {
         return $this->bans()->first();
     }

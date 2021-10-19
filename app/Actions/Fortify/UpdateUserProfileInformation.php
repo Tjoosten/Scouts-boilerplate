@@ -12,14 +12,7 @@ use Laravel\Fortify\Contracts\UpdatesUserProfileInformation;
 
 final class UpdateUserProfileInformation implements UpdatesUserProfileInformation
 {
-    /**
-     * Validate and update the given user's profile information.
-     *
-     * @param  mixed  $user
-     * @param  array  $input
-     * @return void
-     */
-    public function update($user, array $input): void
+    public function update(mixed $user, array $input): void
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
@@ -36,7 +29,7 @@ final class UpdateUserProfileInformation implements UpdatesUserProfileInformatio
         session()->flash('informationUpdated', true);
     }
 
-    protected function updateVerifiedUser(User $user, array $input): void
+    protected function updateVerifiedUser(mixed $user, array $input): void
     {
         $user->forceFill(['name' => $input['name'], 'email' => $input['email'], 'email_verified_at' => null])->save();
         $user->sendEmailVerificationNotification();

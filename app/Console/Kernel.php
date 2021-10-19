@@ -6,9 +6,9 @@ use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 /**
- * Class Kernel 
- * 
- * @package App\Console 
+ * Class Kernel
+ *
+ * @package App\Console
  */
 class Kernel extends ConsoleKernel
 {
@@ -19,23 +19,12 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [];
 
-    /**
-     * Define the application's command schedule.
-     *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
-     */
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule): void
     {
         $schedule->command('ban:delete-expired')->everyMinute();
     }
 
-    /**
-     * Register the commands for the application.
-     *
-     * @return void
-     */
-    protected function commands()
+    protected function commands(): void
     {
         $this->load(__DIR__.'/Commands');
 

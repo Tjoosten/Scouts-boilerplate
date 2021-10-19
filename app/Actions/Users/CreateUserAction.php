@@ -19,7 +19,6 @@ final class CreateUserAction
 
         return DB::transaction(static function () use ($request, $userInformation, $informationObject): User {
             $createdUser = (new UserService)->createUser($request, $userInformation);
-
             $createdUser->assignRole($informationObject->role);
             $createdUser->notify(new UserCreatedNotification($informationObject->password));
 

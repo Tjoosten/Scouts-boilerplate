@@ -5,11 +5,6 @@ namespace App\Rules;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * Class MatchUserPassword
- *
- * @package App\Rules
- */
 class MatchUserPassword implements Rule
 {
     /**

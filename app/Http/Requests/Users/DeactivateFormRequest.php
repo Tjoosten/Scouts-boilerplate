@@ -4,29 +4,16 @@ namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
+use JetBrains\PhpStorm\ArrayShape;
 
-/**
- * Class DeactivateFormRequest
- *
- * @package App\Http\Requests\Users
- */
 class DeactivateFormRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize(): bool
     {
         return Gate::allows('deactivate', $this->userEntity);
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+    #[ArrayShape(['reden' => "string[]"])]
     public function rules(): array
     {
         return ['reden' => ['required', 'string']];
