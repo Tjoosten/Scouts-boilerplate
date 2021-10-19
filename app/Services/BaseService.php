@@ -14,10 +14,9 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
  * ---
  * Modified from: https://github.com/rappasoft/laravel-boilerplate/blob/master/app/Services/BaseService.php
  *
- * @todo Document the base service.
  * @package App\Services
  */
-abstract class BaseService
+abstract class BaseService implements BaseServiceInterface
 {
     /**
      * The Eloquent model for the Service repository.
@@ -75,11 +74,7 @@ abstract class BaseService
      */
     protected array $scopes = [];
 
-    /**
-     * @todo Complete docblock
-     * @param array|string[] $columns
-     * @return Collection
-     */
+    /** {@inheritDoc} */
     public function allRecords(array $columns = ['*']): Collection
     {
         $this->newQuery()->eagerLoad();
@@ -87,21 +82,13 @@ abstract class BaseService
         return $this->query->get($columns);
     }
 
-    /**
-     * Count all the database records from the database table.
-     *
-     * @return int
-     */
+    /** {@inheritDoc} */
     public function countRecords(): int
     {
         return $this->allRecords()->count();
     }
 
-    /**
-     * Get the first specified model record from the database.
-     *
-     * @return Model
-     */
+    /** {@inheritDoc} */
     public function first(): Model
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
