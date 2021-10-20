@@ -18,60 +18,28 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
  */
 abstract class BaseService implements BaseServiceInterface
 {
-    /**
-     * The Eloquent model for the Service repository.
-     *
-     * @var Model
-     */
+    /** The Eloquent model for the Service repository. */
     protected Model $eloquentModel;
 
-    /**
-     * The query builder.
-     *
-     * @var Builder
-     */
+    /** The query builder. */
     protected Builder $query;
 
-    /**
-     * Alias for the query limit.
-     *
-     * @var int|null
-     */
-    protected int|null $take;
+    /** Alias for the query limit. */
+    protected ?int $take;
 
-    /**
-     * Array of related models to eager load.
-     *
-     * @var array
-     */
+    /** Array of related models to eager load. */
     protected array $with = [];
 
-    /**
-     * Array of one or more where clause parameters.
-     *
-     * @var array
-     */
+    /** Array of one or more where clause parameters. */
     protected array $wheres = [];
 
-    /**
-     * Array of one or more where in clause parameters.
-     *
-     * @var array
-     */
+    /** Array of one or more where in clause parameters. */
     protected array $whereIns = [];
 
-    /**
-     * Array of one or more ORDER BY column/value pairs.
-     *
-     * @var array
-     */
+    /** Array of one or more ORDER BY column/value pairs. */
     protected array $orderBys = [];
 
-    /**
-     * Array of scope methods to call on the model.
-     *
-     * @var array
-     */
+    /** Array of scope methods to call on the model. */
     protected array $scopes = [];
 
     /** {@inheritDoc} */
@@ -100,13 +68,7 @@ abstract class BaseService implements BaseServiceInterface
         return $model;
     }
 
-    /**
-     * Get the first specified model record from the database or throw and exception if not found.
-     *
-     * @return Model
-     *
-     * @throws ModelNotFoundException
-     */
+    /** {@inheritDoc} */
     public function firstOrFail(): Model
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
@@ -118,12 +80,7 @@ abstract class BaseService implements BaseServiceInterface
         return $model;
     }
 
-    /**
-     * Getting all the records from the database table.
-     *
-     * @param  array|string[] $columns The columns name that u want to select in your query output.
-     * @return Collection
-     */
+    /** {@inheritDoc} */
     public function get(array $columns = ['*']): Collection
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
@@ -135,12 +92,7 @@ abstract class BaseService implements BaseServiceInterface
         return $models;
     }
 
-    /**
-     * Method for getting a database record based on their unique identifier.
-     *
-     * @param  int|string $identifier The unique identifier from the database record.
-     * @return Model|Collection|Builder|array|null
-     */
+    /** {@inheritDoc} */
     public function getByIdentifier(int|string $identifier): Model|Collection|Builder|array|null
     {
         $this->unsetClauses();
@@ -149,14 +101,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this->query->findOrFail($identifier);
     }
 
-    /**
-     * Method for getting the records based on an database column.
-     *
-     * @param  string         $item     The item value in the database records.
-     * @param  string         $column   The database column name
-     * @param  array|string[] $columns  The column u want to select in your query output.
-     * @return Builder|Model|null
-     */
+    /** {@inheritDoc} */
     public function getByColumn(string $item, string $column, array $columns = ['*']): Builder|Model|null
     {
         $this->unsetClauses();
@@ -165,14 +110,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this->query->where($column, $item)->first($columns);
     }
 
-    /**
-     * Delete the specified model record from the database based on his unique identifier.
-     *
-     * @param  int|string $identifier The unique identifier from the database record.
-     * @return bool|null
-     *
-     * @throws Exception
-     */
+    /** {@inheritDoc} */
     public function deleteByIdentifier(int|string $identifier): bool|null
     {
         $this->unsetClauses();
@@ -180,12 +118,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this->getByIdentifier($identifier)->delete();
     }
 
-    /**
-     * Method for limiting the MySQL SELECT query.
-     *
-     * @param  int $limit The limit integer of the records u want to select.
-     * @return self
-     */
+    /** {@inheritDoc} */
     public function limit(int $limit): self
     {
         $this->take = $limit;
@@ -193,13 +126,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this;
     }
 
-    /**
-     * Method for sorting the database records based on an column.
-     *
-     * @param  string $column    The column name from the table that u want to sort.
-     * @param  string $direction The direction u want to sort in can be ASC or DESC
-     * @return self
-     */
+    /** {@inheritDoc} */
     public function orderBy(string $column, string $direction = 'ASC'): self
     {
         $this->orderBys[] = compact('column', 'direction');
@@ -207,15 +134,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this;
     }
 
-    /**
-     * Get all the database records in a paginated form.
-     *
-     * @param  int            $limit    The amount of records u want per page.
-     * @param  array|string[] $columns  The columns u want to select in the query.
-     * @param  string         $pageName The request parameter name.
-     * @param  string|null    $page     The current page in view.
-     * @return LengthAwarePaginator
-     */
+    /** {@inheritDoc} */
     public function paginate(int $limit = 25, array $columns = ['*'], string $pageName = 'page', null|string $page = null): LengthAwarePaginator
     {
         $this->newQuery()->eagerLoad()->setClauses()->setScopes();
@@ -227,14 +146,7 @@ abstract class BaseService implements BaseServiceInterface
         return $models;
     }
 
-    /**
-     * Add a simple where clause to the query.
-     *
-     * @param  string $column    The column name from the database table.
-     * @param  string $value     The value from the database column.
-     * @param  string $operator  The MySQL comparison operator.
-     * @return self
-     */
+    /** {@inheritDoc} */
     public function where(string $column, string $value, string $operator = '='): self
     {
         $this->wheres[] = compact('column', 'value', 'operator');
@@ -242,13 +154,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this;
     }
 
-    /**
-     * Add a simple where in clause to the query.
-     *
-     * @param  string $column The column name where u want to perform the where clause one.
-     * @param  mixed  $values The given values that need to be matched against the column name
-     * @return self
-     */
+    /** {@inheritDoc} */
     public function whereIn(string $column, mixed $values): self
     {
         $values = is_array($values) ? $values : [$values];
@@ -258,12 +164,7 @@ abstract class BaseService implements BaseServiceInterface
         return $this;
     }
 
-    /**
-     * Set Eloquent relationships to eagerload.
-     *
-     * @param  mixed $relations The relationship names u want to set on the query.
-     * @return $this
-     */
+    /** {@inheritDoc} */
     public function with(mixed $relations): self
     {
         if (is_string($relations)) {
