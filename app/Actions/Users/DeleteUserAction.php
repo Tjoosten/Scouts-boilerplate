@@ -24,14 +24,16 @@ final class DeleteUserAction
 
     private function activityNeedsLogging(User $user): void
     {
-        if (auth()->user()->isNot(model: $user)) {
-            auth()->user()->logActivity('Gebruikers', __('Heeft de login van :name verwijderd.', ['user' => $user->name]));
+        $authenticatedUser = auth()->user();
+
+        if ($authenticatedUser?->isNot(model: $user)) {
+            $authenticatedUser?->logActivity('Gebruikers', 'Heeft de login van :name verwijderd.', ['user' => $user->name]);
         }
     }
 
     private function sendOutEmailNotification(User $user): void
     {
-        if (auth()->user()->is($user)) {
+        if (auth()->user()?->is($user)) {
             Notification::route('mail', $user->email)->notify(new AccountDeletedNotification());
         }
     }

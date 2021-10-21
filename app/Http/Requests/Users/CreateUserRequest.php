@@ -5,6 +5,7 @@ namespace App\Http\Requests\Users;
 use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
+use JetBrains\PhpStorm\ArrayShape;
 
 class CreateUserRequest extends FormRequest
 {
@@ -13,6 +14,7 @@ class CreateUserRequest extends FormRequest
         return Gate::allows('create', User::class);
     }
 
+    #[ArrayShape(['name' => "string[]", 'email' => "string[]", 'role' => "string[]", 'password' => "string[]"])]
     public function rules(): array
     {
         return [

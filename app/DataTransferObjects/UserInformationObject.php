@@ -5,11 +5,6 @@ namespace App\DataTransferObjects;
 use Illuminate\Http\Request;
 use Spatie\DataTransferObject\DataTransferObject;
 
-/**
- * Class UserInformationObject
- *
- * @package App\DataTransferObjects
- */
 class UserInformationObject extends DataTransferObject
 {
     public string|null $name;
