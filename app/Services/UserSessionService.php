@@ -11,18 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Jenssegers\Agent\Agent;
 use stdClass;
 
-/**
- * Class UserSessionService
- *
- * @package App\Services
- */
 class UserSessionService
 {
-    /**
-     * Method for getting all the session properties in the application.
-     *
-     * @return Collection
-     */
     public function getProperties(): Collection
     {
         if ($this->isNotUsingDatabaseTable()) {
@@ -37,21 +27,11 @@ class UserSessionService
         ]);
     }
 
-    /**
-     * Method for determining if the session driver is the database driver.
-     *
-     * @return bool
-     */
     private function isNotUsingDatabaseTable(): bool
     {
         return config('session.driver') !== 'database';
     }
 
-    /**
-     * Method for getting all the authentication sessions from the authenticated user.
-     *
-     * @return Collection
-     */
     private function getUserSessions(): Collection
     {
         return DB::connection(config('session.connection'))->table($this->sessionDatabaseTable())
@@ -60,22 +40,11 @@ class UserSessionService
             ->get();
     }
 
-    /**
-     * Method for getting the database table name in the application.
-     *
-     * @return string
-     */
     private function sessionDatabaseTable(): string
     {
         return config('session.table', 'sessions');
     }
 
-    /**
-     * Method for converting the session data to an Browser agent.
-     *
-     * @param  stdClass $session All the info from the given session.
-     * @return Agent
-     */
     private function createAgent(stdClass $session): Agent
     {
         return tap(new Agent, static function (Agent $agent) use ($session) {
@@ -83,21 +52,11 @@ class UserSessionService
         });
     }
 
-    /**
-     * Determine if the user has other sessions than the current authenticated session.
-     *
-     * @return bool
-     */
     public function canLogoutOtherSession(): bool
     {
         return $this->otherSessions()->count() > 0;
     }
 
-    /**
-     * The query builder for getting all the current other user sessions.
-     *
-     * @return Builder
-     */
     public function otherSessions(): Builder
     {
         return DB::connection(config('session.connection'))->table($this->sessionDatabaseTable())
@@ -106,11 +65,6 @@ class UserSessionService
     }
 
     /**
-     * Method for logging all the browser sessions out and deleted them.
-     *
-     * @param  string $password The password that the user has filled in.
-     * @return void
-     *
      * @throws \Illuminate\Auth\AuthenticationException
      */
     public function logoutOtherBrowserSessions(string $password): void
