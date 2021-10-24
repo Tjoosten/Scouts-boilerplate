@@ -21,16 +21,31 @@ use Laravel\Fortify\Actions\EnableTwoFactorAuthentication;
  *
  * @todo IDEA: Implement method in the backend where the webmaster can reset the two factor authentication.
  * @todo IDEA: Implement command artisan where the develop can reset the two factor authentication.
+ * @todo IDEA: JSON responses for when the user wants to use the two factor authentication settings in his API.
  *
  * @package App\Http\Controllers\Front\Settings
  */
 final class TwoFactorController extends Controller
 {
+    /**
+     * TwoFactorController constructor.
+     *
+     * @return void
+     */
     public function __construct()
     {
         $this->middleware('password.confirm')->except('enable');
     }
 
+    /**
+     * Method for enabling the Two Factor authentication for the application user account.
+     *
+     * @todo Build up the current password validator request.
+     *
+     * @param  Request                       $request                       Request instance that handles the input validation.
+     * @param  EnableTwoFactorAuthentication $enableTwoFactorAuthentication Laravel Fortify action that enables the 2FA
+     * @return RedirectResponse
+     */
     public function enable(Request $request, EnableTwoFactorAuthentication $enableTwoFactorAuthentication): RedirectResponse
     {
         $enableTwoFactorAuthentication($request->user());
@@ -40,11 +55,21 @@ final class TwoFactorController extends Controller
             ->with('showingRecoveryCodes', true);
     }
 
+    /**
+     * Method for disabling the two factor authentication settings in his account on the application.
+     * 
+     * @return RedirectResponse
+     */
     public function disable(): RedirectResponse
     {
         dd('TODO: needs implementation');
     }
 
+    /**
+     * Method for generating new recovery codes for the user his two factor authentication settings.
+     *
+     * @return RedirectResponse
+     */
     public function recoveryCodes(): RedirectResponse
     {
         dd('TODO: needs implementation');
