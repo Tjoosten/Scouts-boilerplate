@@ -8,9 +8,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OtherSessionsRequest;
 use App\Http\Requests\Profile\SecuritySettingsRequest;
 use App\Services\UserSessionService;
+use App\Services\TwoFactorAuthenticationService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Laravel\Fortify\Features;
 
 /**
  * Class SecurityController
@@ -22,12 +24,18 @@ class SecurityController extends Controller
     /**
      * Method for displaying the security settings for the user account.
      */
-    public function index(Request $request, UserSessionService $userSessionService): Renderable
-    {
+    public function index(
+        Request $request,
+        UserSessionService $userSessionService,
+        TwoFactorAuthenticationService $twoFactorAuthenticationService
+    ): Renderable {
         return view('auth.settings.security', [
             'user' => $request->user(),
             'authSessions' => $userSessionService->getProperties(),
             'canLogoutAuthSessions' => $userSessionService->canLogoutOtherSession(),
+            'twoFactorFeatureEnabled' => Features::enabled(Features::twoFactorAuthentication()),
+            'twoFactorAuthenticationDisabled' => $twoFactorAuthenticationService->isDisabled(),
+            'twoFactorAuthenticationEnabled' => $twoFactorAuthenticationService->isEnabled(),
         ]);
     }
 

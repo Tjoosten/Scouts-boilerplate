@@ -7,6 +7,7 @@ use App\Http\Controllers\Front\Settings\InformationController;
 use App\Http\Controllers\Front\Settings\TokensController;
 use App\Http\Controllers\Front\WelcomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Front\Settings\TwoFactorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::group(['middleware' => ['auth', 'forbid-banned-user']], static function (
 
         Route::get('/security', [SecurityController::class, 'index'])->name('account.settings.security');
         Route::patch('/security', [SecurityController::class, 'update'])->name('account.settings.security');
+
+        Route::post('/two-factor/activeren', [TwoFactorController::class, 'enable'])->name('two-factor.enable');
+        Route::get('/two-factor/deactiveren', [TwoFactorController::class, 'disable'])->name('two-factor.disable');
+        Route::get('/two-factor/genereer/herstelcodes', [TwoFactorController::class, 'recoveryCodes'])->name('two-factor.recoveryCodes');
     });
 
     Route::get('/account-verwijderen', DeleteController::class)->name('account.delete');

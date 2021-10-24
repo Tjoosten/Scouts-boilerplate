@@ -13,6 +13,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Cog\Contracts\Ban\Bannable as BannableContract;
 use Cog\Laravel\Ban\Traits\Bannable;
+use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Activitylog\Traits\CausesActivity;
 use Spatie\Permission\Traits\HasRoles;
@@ -32,6 +33,7 @@ class User extends Authenticatable implements BannableContract
     use Bannable;
     use CausesActivity;
     use HasApiTokens;
+    use TwoFactorAuthenticatable;
 
     protected $fillable = ['name', 'email', 'password'];
     protected $hidden = ['password', 'remember_token'];
@@ -46,7 +48,6 @@ class User extends Authenticatable implements BannableContract
     {
         return ucwords($name);
     }
-
 
     public function banInformation(): Model|MorphMany|null
     {
