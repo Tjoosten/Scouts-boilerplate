@@ -1,12 +1,12 @@
 name: Feature Request
-description: Propose a new feature for Scouts--boilerplate
+description: Propose a new feature for Scouts-boilerplate
 title: "[Feature Request]: "
 labels: [feature request]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for proposing a feature for Tinkerwell!
+        Thanks for proposing a feature for Scouts-boilerplate!
   - type: textarea
     id: feature-description
     attributes:
