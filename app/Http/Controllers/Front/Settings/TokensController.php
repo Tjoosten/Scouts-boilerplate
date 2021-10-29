@@ -36,6 +36,7 @@ class TokensController extends Controller
         return view('auth.settings.apiTokens', [
             'user' => $request->user(),
             'hasTokens' => $request->user()->tokens->count() > 0,
+            'tokenAbilities' => $this->tokenService->basicAbilities(),
             'tokens' => $request->user()->tokens()->paginate(7)
         ]);
     }

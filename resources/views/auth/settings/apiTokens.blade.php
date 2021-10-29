@@ -17,10 +17,32 @@
             <div class="offset-1 col-8">
                 <x-form method="POST" class="card border-0 shadow-sm" :action="route('api.tokens.store')">
                     <div class="card-body">
-                        <div class="form-group mb-0">
+                        <div class="form-group">
                             <label for="name">{{ __('Service naam') }}</label>
                             <input type="text" placeholder="{{ __('Naam voor je API token') }}" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
                             <x-error class="invalid-feedback" field="name"/>
+                        </div>
+
+                        <hr>
+
+                        <h5 class="mb-0">Token scopes</h5>
+                        <p class="pb-3 mb-0 card-text text-muted">Scopes definiëren de toegang voor persoonlijke tokens van de API.</p>
+
+                        <div class="form-group mx-3 mb-0">@foreach($tokenAbilities as $ability)
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox"
+                                           name="tokenAbilities[]"
+                                           value="$ability"
+                                           class="custom-control-input"
+                                           id="{{ $ability['name'] }}"
+                                    >
+
+                                    <label class="custom-control-label row" for="{{ $ability['name'] }}">
+                                        <div class="col-3 pl-1">{{ $ability['name'] }}</div>
+                                        <div class="col-9 text-muted">{{ $ability['description'] }}</div>
+                                    </label>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="card-footer border-top-0">
