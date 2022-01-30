@@ -122,6 +122,23 @@
                 </div>
             </div>
         @endif
+
+        @if ($twoFactorFeatureEnabled)
+            <hr class="my-4">
+
+            <div class="row">
+                <div class="col-3">
+                    <h5 class="font-weight-bold text-bijna-zwart">{{ __('Two Factor authenticatie') }}</h5>
+                    <p class="text-muted small">
+                        {{ __('Beveilig je account met een extra unieke token tijdens de authenticatie procedure.') }}
+                    </p>
+                </div>
+
+                <div class="offset-1 col-8">
+                    @include('auth.settings._two-factor-authentication-form')
+                </div>
+            </div>
+        @endif
     </div>
 
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalTitle" aria-hidden="true">
@@ -146,7 +163,7 @@
                 <div class="modal-footer border-top-0">
                     <button type="button" class="btn border-0 shadow-sm btn-secondary" data-dismiss="modal">{{ __('Nevermind') }}</button>
                     <button type="submit" form="sessionForm" class="btn border-0 shadow-sm btn-primary">
-                        <x-heroicon-o-logout class="icon"/> {{ __('Andere browsers afmelden') }}
+                        <x:heroicon-o-logout class="icon"/> {{ __('Andere browsers afmelden') }}
                     </button>
                 </div>
             </div>

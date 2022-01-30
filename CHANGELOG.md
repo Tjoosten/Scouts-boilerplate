@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **Added** 
 
+- Implementatie van laravel livewire.
 - Implement an contract on the base service in the project.
 
 **Removed**
